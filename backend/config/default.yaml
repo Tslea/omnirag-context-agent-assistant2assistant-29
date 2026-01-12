@@ -1,0 +1,136 @@
+# OMNI Configuration File
+# Environment variables override these settings using OMNI_ prefix
+# Example: OMNI_LLM__PROVIDER=anthropic overrides llm.provider
+
+# Server Configuration
+server:
+  host: "localhost"
+  port: 8765
+  cors_origins:
+    - "vscode-webview://*"
+    - "http://localhost:*"
+  debug: false
+  log_level: "INFO"
+
+# LLM Provider Configuration
+llm:
+  # Default provider: openai, anthropic, local
+  provider: "local"
+  
+  # OpenAI settings
+  openai:
+    api_key: ${OPENAI_API_KEY}
+    model: "gpt-4-turbo-preview"
+    embedding_model: "text-embedding-3-small"
+    max_tokens: 4096
+    temperature: 0.7
+  
+  # Anthropic settings
+  anthropic:
+    api_key: ${ANTHROPIC_API_KEY}
+    model: "claude-3-sonnet-20240229"
+    max_tokens: 4096
+    temperature: 0.7
+  
+  # Local LLM settings (LM Studio, Ollama, llama.cpp)
+  local:
+    provider_type: "ollama"  # lmstudio, ollama, llamacpp
+    base_url: "http://localhost:11434/v1"
+    model: "phi"
+    temperature: 0.7
+
+# Vector Database Configuration
+vectordb:
+  # Default provider: qdrant, chroma, faiss
+  provider: "chroma"
+  
+  # Qdrant settings
+  qdrant:
+    url: ${QDRANT_URL}
+    api_key: ${QDRANT_API_KEY}
+    prefer_grpc: false
+  
+  # ChromaDB settings
+  chroma:
+    persist_path: "./data/chroma"
+  
+  # FAISS settings
+  faiss:
+    persist_path: "./data/faiss"
+  
+  # Default collection settings
+  default_collection: "omni_documents"
+  default_dimension: 1536
+
+# RAG Configuration
+rag:
+  enabled: true
+  chunk_size: 512
+  chunk_overlap: 50
+  top_k: 5
+  score_threshold: 0.7
+
+# Agent Configuration
+agents:
+  # Plugin directories to scan
+  plugin_dirs:
+    - "./plugins/agents"
+    - "~/.omni/agents"
+  
+  # Default agents to load - IMPORTANT: context_agent and rag_agent MUST come before security/compliance
+  default_agents:
+    - "context_agent"
+    - "rag_agent"
+    - "security"
+    - "compliance"
+    - "assistant"
+    - "code_agent"
+    - "planner"
+  
+  # Agent-specific settings
+  assistant:
+    temperature: 0.7
+  
+  code_agent:
+    language: "python"
+    temperature: 0.3
+  
+  planner:
+    temperature: 0.5
+
+# Workflow Configuration
+workflows:
+  # Plugin directories
+  plugin_dirs:
+    - "./plugins/workflows"
+  
+  # Timeout settings (seconds)
+  default_timeout: 300
+  step_timeout: 60
+
+# Logging Configuration
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "./logs/omni.log"
+  max_size: 10485760  # 10MB
+  backup_count: 5
+
+# Security Configuration
+security:
+  # API key for server authentication
+  api_key: ${OMNI_API_KEY}
+  # Enable/disable authentication
+  require_auth: false
+  # Allowed hosts
+  allowed_hosts:
+    - "localhost"
+    - "127.0.0.1"
+
+# Feature Flags
+features:
+  enable_streaming: true
+  enable_tool_use: true
+  enable_multi_agent: true
+  enable_rag: true
+  enable_code_execution: false  # Disabled by default for security

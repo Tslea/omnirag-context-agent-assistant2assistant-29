@@ -1,0 +1,372 @@
+{
+  "timestamp": "2026-01-10T14:44:39.142834",
+  "project_name": "auth-benchmark-app",
+  "total_tasks": 8,
+  "totals": {
+    "without_omni": {
+      "tokens": 9340,
+      "files_read": 61,
+      "time_seconds": 9.34
+    },
+    "with_omni": {
+      "tokens": 1569,
+      "files_read": 16,
+      "time_seconds": 1.569
+    },
+    "savings": {
+      "token_percent": 83.20128479657387,
+      "time_percent": 83.20128479657387
+    }
+  },
+  "tasks": [
+    {
+      "id": "T1_project_setup",
+      "name": "Setup Progetto Base",
+      "without_omni": {
+        "task_id": "T1_project_setup",
+        "task_name": "Setup Progetto Base",
+        "scenario": "without_omni",
+        "context_tokens": 255,
+        "task_tokens": 46,
+        "total_input_tokens": 301,
+        "estimated_output_tokens": 500,
+        "files_read": [
+          "main.py",
+          "config.py",
+          "requirements.txt"
+        ],
+        "files_read_count": 3,
+        "estimated_time_seconds": 0.301,
+        "has_full_context": true,
+        "context_summary": "Read 3 raw files"
+      },
+      "with_omni": {
+        "task_id": "T1_project_setup",
+        "task_name": "Setup Progetto Base",
+        "scenario": "with_omni",
+        "context_tokens": 49,
+        "task_tokens": 46,
+        "total_input_tokens": 95,
+        "estimated_output_tokens": 200,
+        "files_read": [
+          ".omni/context/project-overview.md",
+          ".omni/context/file-summaries.md"
+        ],
+        "files_read_count": 2,
+        "estimated_time_seconds": 0.095,
+        "has_full_context": true,
+        "context_summary": "Read 2 OMNI summary files"
+      }
+    },
+    {
+      "id": "T2_database_models",
+      "name": "Modello User e Database",
+      "without_omni": {
+        "task_id": "T2_database_models",
+        "task_name": "Modello User e Database",
+        "scenario": "without_omni",
+        "context_tokens": 508,
+        "task_tokens": 53,
+        "total_input_tokens": 561,
+        "estimated_output_tokens": 2000,
+        "files_read": [
+          "main.py",
+          "config.py",
+          "requirements.txt",
+          "models/user.py",
+          "database.py"
+        ],
+        "files_read_count": 5,
+        "estimated_time_seconds": 0.561,
+        "has_full_context": true,
+        "context_summary": "Read 5 raw files"
+      },
+      "with_omni": {
+        "task_id": "T2_database_models",
+        "task_name": "Modello User e Database",
+        "scenario": "with_omni",
+        "context_tokens": 79,
+        "task_tokens": 53,
+        "total_input_tokens": 132,
+        "estimated_output_tokens": 400,
+        "files_read": [
+          ".omni/context/project-overview.md",
+          ".omni/context/file-summaries.md"
+        ],
+        "files_read_count": 2,
+        "estimated_time_seconds": 0.132,
+        "has_full_context": true,
+        "context_summary": "Read 2 OMNI summary files"
+      }
+    },
+    {
+      "id": "T3_auth_utils",
+      "name": "Utilities Autenticazione",
+      "without_omni": {
+        "task_id": "T3_auth_utils",
+        "task_name": "Utilities Autenticazione",
+        "scenario": "without_omni",
+        "context_tokens": 738,
+        "task_tokens": 80,
+        "total_input_tokens": 818,
+        "estimated_output_tokens": 3000,
+        "files_read": [
+          "main.py",
+          "config.py",
+          "requirements.txt",
+          "models/user.py",
+          "database.py",
+          "auth/utils.py"
+        ],
+        "files_read_count": 6,
+        "estimated_time_seconds": 0.8180000000000001,
+        "has_full_context": true,
+        "context_summary": "Read 6 raw files"
+      },
+      "with_omni": {
+        "task_id": "T3_auth_utils",
+        "task_name": "Utilities Autenticazione",
+        "scenario": "with_omni",
+        "context_tokens": 107,
+        "task_tokens": 80,
+        "total_input_tokens": 187,
+        "estimated_output_tokens": 500,
+        "files_read": [
+          ".omni/context/project-overview.md",
+          ".omni/context/file-summaries.md"
+        ],
+        "files_read_count": 2,
+        "estimated_time_seconds": 0.187,
+        "has_full_context": true,
+        "context_summary": "Read 2 OMNI summary files"
+      }
+    },
+    {
+      "id": "T4_register_endpoint",
+      "name": "Endpoint Registrazione",
+      "without_omni": {
+        "task_id": "T4_register_endpoint",
+        "task_name": "Endpoint Registrazione",
+        "scenario": "without_omni",
+        "context_tokens": 1195,
+        "task_tokens": 69,
+        "total_input_tokens": 1264,
+        "estimated_output_tokens": 5000,
+        "files_read": [
+          "main.py",
+          "config.py",
+          "requirements.txt",
+          "models/user.py",
+          "database.py",
+          "auth/utils.py",
+          "routes/auth.py",
+          "schemas/auth.py"
+        ],
+        "files_read_count": 8,
+        "estimated_time_seconds": 1.264,
+        "has_full_context": true,
+        "context_summary": "Read 8 raw files"
+      },
+      "with_omni": {
+        "task_id": "T4_register_endpoint",
+        "task_name": "Endpoint Registrazione",
+        "scenario": "with_omni",
+        "context_tokens": 150,
+        "task_tokens": 69,
+        "total_input_tokens": 219,
+        "estimated_output_tokens": 800,
+        "files_read": [
+          ".omni/context/project-overview.md",
+          ".omni/context/file-summaries.md"
+        ],
+        "files_read_count": 2,
+        "estimated_time_seconds": 0.219,
+        "has_full_context": true,
+        "context_summary": "Read 2 OMNI summary files"
+      }
+    },
+    {
+      "id": "T5_login_endpoint",
+      "name": "Endpoint Login",
+      "without_omni": {
+        "task_id": "T5_login_endpoint",
+        "task_name": "Endpoint Login",
+        "scenario": "without_omni",
+        "context_tokens": 1195,
+        "task_tokens": 60,
+        "total_input_tokens": 1255,
+        "estimated_output_tokens": 4000,
+        "files_read": [
+          "main.py",
+          "config.py",
+          "requirements.txt",
+          "models/user.py",
+          "database.py",
+          "auth/utils.py",
+          "routes/auth.py",
+          "schemas/auth.py"
+        ],
+        "files_read_count": 8,
+        "estimated_time_seconds": 1.2550000000000001,
+        "has_full_context": true,
+        "context_summary": "Read 8 raw files"
+      },
+      "with_omni": {
+        "task_id": "T5_login_endpoint",
+        "task_name": "Endpoint Login",
+        "scenario": "with_omni",
+        "context_tokens": 150,
+        "task_tokens": 60,
+        "total_input_tokens": 210,
+        "estimated_output_tokens": 600,
+        "files_read": [
+          ".omni/context/project-overview.md",
+          ".omni/context/file-summaries.md"
+        ],
+        "files_read_count": 2,
+        "estimated_time_seconds": 0.21,
+        "has_full_context": true,
+        "context_summary": "Read 2 OMNI summary files"
+      }
+    },
+    {
+      "id": "T6_auth_middleware",
+      "name": "Middleware Autenticazione",
+      "without_omni": {
+        "task_id": "T6_auth_middleware",
+        "task_name": "Middleware Autenticazione",
+        "scenario": "without_omni",
+        "context_tokens": 1443,
+        "task_tokens": 66,
+        "total_input_tokens": 1509,
+        "estimated_output_tokens": 4500,
+        "files_read": [
+          "main.py",
+          "config.py",
+          "requirements.txt",
+          "models/user.py",
+          "database.py",
+          "auth/utils.py",
+          "routes/auth.py",
+          "schemas/auth.py",
+          "auth/dependencies.py"
+        ],
+        "files_read_count": 9,
+        "estimated_time_seconds": 1.5090000000000001,
+        "has_full_context": true,
+        "context_summary": "Read 9 raw files"
+      },
+      "with_omni": {
+        "task_id": "T6_auth_middleware",
+        "task_name": "Middleware Autenticazione",
+        "scenario": "with_omni",
+        "context_tokens": 167,
+        "task_tokens": 66,
+        "total_input_tokens": 233,
+        "estimated_output_tokens": 700,
+        "files_read": [
+          ".omni/context/project-overview.md",
+          ".omni/context/file-summaries.md"
+        ],
+        "files_read_count": 2,
+        "estimated_time_seconds": 0.233,
+        "has_full_context": true,
+        "context_summary": "Read 2 OMNI summary files"
+      }
+    },
+    {
+      "id": "T7_protected_endpoint",
+      "name": "Endpoint Protetto (Profile)",
+      "without_omni": {
+        "task_id": "T7_protected_endpoint",
+        "task_name": "Endpoint Protetto (Profile)",
+        "scenario": "without_omni",
+        "context_tokens": 1532,
+        "task_tokens": 51,
+        "total_input_tokens": 1583,
+        "estimated_output_tokens": 3000,
+        "files_read": [
+          "main.py",
+          "config.py",
+          "requirements.txt",
+          "models/user.py",
+          "database.py",
+          "auth/utils.py",
+          "routes/auth.py",
+          "schemas/auth.py",
+          "auth/dependencies.py",
+          "routes/users.py"
+        ],
+        "files_read_count": 10,
+        "estimated_time_seconds": 1.583,
+        "has_full_context": true,
+        "context_summary": "Read 10 raw files"
+      },
+      "with_omni": {
+        "task_id": "T7_protected_endpoint",
+        "task_name": "Endpoint Protetto (Profile)",
+        "scenario": "with_omni",
+        "context_tokens": 180,
+        "task_tokens": 51,
+        "total_input_tokens": 231,
+        "estimated_output_tokens": 400,
+        "files_read": [
+          ".omni/context/project-overview.md",
+          ".omni/context/file-summaries.md"
+        ],
+        "files_read_count": 2,
+        "estimated_time_seconds": 0.231,
+        "has_full_context": true,
+        "context_summary": "Read 2 OMNI summary files"
+      }
+    },
+    {
+      "id": "T8_frontend_login",
+      "name": "Frontend Login Page",
+      "without_omni": {
+        "task_id": "T8_frontend_login",
+        "task_name": "Frontend Login Page",
+        "scenario": "without_omni",
+        "context_tokens": 1985,
+        "task_tokens": 64,
+        "total_input_tokens": 2049,
+        "estimated_output_tokens": 2500,
+        "files_read": [
+          "main.py",
+          "config.py",
+          "requirements.txt",
+          "models/user.py",
+          "database.py",
+          "auth/utils.py",
+          "routes/auth.py",
+          "schemas/auth.py",
+          "auth/dependencies.py",
+          "routes/users.py",
+          "static/login.html",
+          "static/js/auth.js"
+        ],
+        "files_read_count": 12,
+        "estimated_time_seconds": 2.049,
+        "has_full_context": true,
+        "context_summary": "Read 12 raw files"
+      },
+      "with_omni": {
+        "task_id": "T8_frontend_login",
+        "task_name": "Frontend Login Page",
+        "scenario": "with_omni",
+        "context_tokens": 198,
+        "task_tokens": 64,
+        "total_input_tokens": 262,
+        "estimated_output_tokens": 500,
+        "files_read": [
+          ".omni/context/project-overview.md",
+          ".omni/context/file-summaries.md"
+        ],
+        "files_read_count": 2,
+        "estimated_time_seconds": 0.262,
+        "has_full_context": true,
+        "context_summary": "Read 2 OMNI summary files"
+      }
+    }
+  ]
+}

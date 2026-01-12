@@ -1,0 +1,4470 @@
+{
+  "version": 50,
+  "last_modifier": "copilot",
+  "project_type": "fullstack",
+  "backend_framework": "fastapi",
+  "frontend_framework": "react",
+  "database": "sqlite",
+  "files": {
+    "c:\\Kick this Uss\\OMNI\\test_omni.py": {
+      "file_path": "c:\\Kick this Uss\\OMNI\\test_omni.py",
+      "relative_path": "c:\\Kick this Uss\\OMNI\\test_omni.py",
+      "language": "python",
+      "lines_of_code": 229,
+      "classes": [],
+      "functions": [
+        {
+          "name": "test_validation",
+          "params": [],
+          "returns": "",
+          "docstring": "Test completo del sistema di validazione.",
+          "is_async": true,
+          "is_private": false
+        }
+      ],
+      "imports": {
+        "internal": [
+          "backend.agents.context_agent",
+          "backend.agents.rag_agent",
+          "backend.agents.security_agent",
+          "backend.agents.compliance_agent"
+        ],
+        "external": [
+          "asyncio",
+          "sys",
+          "pytest"
+        ]
+      },
+      "exports": [],
+      "constants": [],
+      "purpose": "Test OMNI - Assistant to the Assistant",
+      "key_responsibilities": [],
+      "module_docstring": "Test OMNI - Assistant to the Assistant\n\nQuesto script mostra come OMNI valida il codice PRIMA che venga applicato.\nSimula il flusso: Copilot genera → OMNI valida → OK o Warning",
+      "has_type_hints": true,
+      "has_docstrings": true,
+      "is_test_file": true,
+      "security_flags": [
+        "hardcoded_secret",
+        "sql_injection",
+        "eval_usage"
+      ],
+      "compliance_flags": [
+        "pii_handling",
+        "logging_sensitive"
+      ],
+      "last_analyzed": "2026-01-10T14:18:48.870361"
+    },
+    "c:\\Kick this Uss\\OMNI\\test_omni_simple.py": {
+      "file_path": "c:\\Kick this Uss\\OMNI\\test_omni_simple.py",
+      "relative_path": "c:\\Kick this Uss\\OMNI\\test_omni_simple.py",
+      "language": "python",
+      "lines_of_code": 357,
+      "classes": [
+        {
+          "name": "Severity",
+          "methods": [],
+          "docstring": "",
+          "base_classes": [
+            "str",
+            "Enum"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "SecurityFinding",
+          "methods": [],
+          "docstring": "",
+          "base_classes": [],
+          "is_dataclass": true,
+          "is_abstract": false
+        },
+        {
+          "name": "ComplianceFinding",
+          "methods": [],
+          "docstring": "",
+          "base_classes": [],
+          "is_dataclass": true,
+          "is_abstract": false
+        },
+        {
+          "name": "SimpleSecurityChecker",
+          "methods": [
+            "check"
+          ],
+          "docstring": "Security checker semplificato per demo.",
+          "base_classes": [],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "SimpleComplianceChecker",
+          "methods": [
+            "check"
+          ],
+          "docstring": "Compliance checker semplificato per demo.",
+          "base_classes": [],
+          "is_dataclass": false,
+          "is_abstract": false
+        }
+      ],
+      "functions": [],
+      "imports": {
+        "internal": [],
+        "external": [
+          "dataclasses",
+          "re",
+          "sys",
+          "typing",
+          "enum",
+          "datetime",
+          "asyncio"
+        ]
+      },
+      "exports": [],
+      "constants": [
+        "CRITICAL",
+        "HIGH",
+        "MEDIUM",
+        "LOW",
+        "INFO",
+        "PATTERNS"
+      ],
+      "purpose": "Test OMNI - Assistant to the Assistant",
+      "key_responsibilities": [],
+      "module_docstring": "Test OMNI - Assistant to the Assistant\n\nQuesto script mostra come OMNI valida il codice PRIMA che venga applicato.\nSimula il flusso: Copilot genera → OMNI valida → OK o Warning\n\nUSO: python test_omni_simple.py",
+      "has_type_hints": true,
+      "has_docstrings": true,
+      "is_test_file": true,
+      "security_flags": [
+        "hardcoded_secret",
+        "sql_injection",
+        "shell_injection",
+        "eval_usage"
+      ],
+      "compliance_flags": [
+        "pii_handling",
+        "logging_sensitive"
+      ],
+      "last_analyzed": "2026-01-10T14:18:48.877361"
+    },
+    "c:\\Kick this Uss\\OMNI\\backend\\observability.py": {
+      "file_path": "c:\\Kick this Uss\\OMNI\\backend\\observability.py",
+      "relative_path": "c:\\Kick this Uss\\OMNI\\backend\\observability.py",
+      "language": "python",
+      "lines_of_code": 665,
+      "classes": [
+        {
+          "name": "CorrelationContext",
+          "methods": [
+            "get",
+            "set",
+            "generate",
+            "push",
+            "pop",
+            "clear"
+          ],
+          "docstring": "Thread-local storage for correlation IDs.\n\nAllows tracing a request across all agent calls.",
+          "base_classes": [],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "LogContext",
+          "methods": [
+            "to_dict"
+          ],
+          "docstring": "Context attached to log entries.",
+          "base_classes": [],
+          "is_dataclass": true,
+          "is_abstract": false
+        },
+        {
+          "name": "StructuredLogger",
+          "methods": [
+            "__init__",
+            "with_context",
+            "_format_message",
+            "debug",
+            "info",
+            "warning",
+            "error",
+            "exception"
+          ],
+          "docstring": "Logger with structured context and correlation IDs.\n\nUsage:\n    log = StructuredLogger(\"agent.security\")\n    log.info(\"Scanning file\", file_path=\"/app/main.py\", issues=3)",
+          "base_classes": [],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "TimingMetric",
+          "methods": [],
+          "docstring": "A single timing measurement.",
+          "base_classes": [],
+          "is_dataclass": true,
+          "is_abstract": false
+        },
+        {
+          "name": "MetricsCollector",
+          "methods": [
+            "__init__",
+            "get_instance",
+            "record_timing",
+            "record_timing_sync",
+            "increment_counter",
+            "increment_counter_sync",
+            "set_gauge",
+            "get_counter",
+            "get_gauge",
+            "get_timing_stats",
+            "get_all_metrics",
+            "reset"
+          ],
+          "docstring": "Collects and aggregates metrics.\n\nThread-safe collector for timing and counter metrics.",
+          "base_classes": [],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "AgentSpan",
+          "methods": [
+            "duration_ms",
+            "complete",
+            "to_dict"
+          ],
+          "docstring": "Represents a traced span for agent execution.\n\nUse this to wrap agent.process() calls for full observability.",
+          "base_classes": [],
+          "is_dataclass": true,
+          "is_abstract": false
+        },
+        {
+          "name": "RequestTrace",
+          "methods": [
+            "__init__",
+            "span",
+            "total_duration_ms",
+            "get_summary"
+          ],
+          "docstring": "Traces an entire request through all agents.\n\nUsage:\n    trace = RequestTrace()\n    \n    async with trace.span(\"context_agent\", \"analyze_project\"):\n        await context_agent.process(...)\n    \n    as",
+          "base_classes": [],
+          "is_dataclass": false,
+          "is_abstract": false
+        }
+      ],
+      "functions": [],
+      "imports": {
+        "internal": [],
+        "external": [
+          "logging",
+          "dataclasses",
+          "contextlib",
+          "uuid",
+          "typing",
+          "datetime",
+          "functools",
+          "time",
+          "asyncio"
+        ]
+      },
+      "exports": [],
+      "constants": [
+        "T",
+        "METRIC_NAMES"
+      ],
+      "purpose": "Observability Module",
+      "key_responsibilities": [],
+      "module_docstring": "Observability Module\n\nProvides distributed tracing, structured logging, and metrics collection.\n\nKey features:\n- Correlation IDs for request tracing across agents\n- Structured logging with context\n- Timing metrics for performance monitoring\n- Integration hooks for external monitoring",
+      "has_type_hints": true,
+      "has_docstrings": true,
+      "is_test_file": false,
+      "security_flags": [],
+      "compliance_flags": [],
+      "last_analyzed": "2026-01-10T14:18:48.889540"
+    },
+    "c:\\Kick this Uss\\OMNI\\backend\\__init__.py": {
+      "file_path": "c:\\Kick this Uss\\OMNI\\backend\\__init__.py",
+      "relative_path": "c:\\Kick this Uss\\OMNI\\backend\\__init__.py",
+      "language": "python",
+      "lines_of_code": 64,
+      "classes": [],
+      "functions": [],
+      "imports": {
+        "internal": [
+          "backend.core",
+          "backend.adapters.llm.factory",
+          "backend.adapters.vectordb.factory",
+          "backend.agents",
+          "backend.config",
+          "backend.server"
+        ],
+        "external": []
+      },
+      "exports": [],
+      "constants": [],
+      "purpose": "OMNI Backend Package",
+      "key_responsibilities": [],
+      "module_docstring": "OMNI Backend Package\n\nA modular, agent-based AI development system with swappable components.",
+      "has_type_hints": false,
+      "has_docstrings": true,
+      "is_test_file": false,
+      "security_flags": [],
+      "compliance_flags": [],
+      "last_analyzed": "2026-01-10T14:18:48.891541"
+    },
+    "c:\\Kick this Uss\\OMNI\\backend\\adapters\\llm\\anthropic_adapter.py": {
+      "file_path": "c:\\Kick this Uss\\OMNI\\backend\\adapters\\llm\\anthropic_adapter.py",
+      "relative_path": "c:\\Kick this Uss\\OMNI\\backend\\adapters\\llm\\anthropic_adapter.py",
+      "language": "python",
+      "lines_of_code": 249,
+      "classes": [
+        {
+          "name": "AnthropicAdapter",
+          "methods": [
+            "__init__",
+            "provider_name",
+            "is_available",
+            "default_embedding_model",
+            "_get_client",
+            "_convert_messages_anthropic",
+            "complete",
+            "stream",
+            "embed",
+            "_convert_tools_anthropic",
+            "_handle_anthropic_error"
+          ],
+          "docstring": "Anthropic Claude adapter.\n\nExample:\n    ```python\n    adapter = AnthropicAdapter(\n        api_key=\"sk-ant-...\",\n        default_model=\"claude-3-opus-20240229\"\n    )\n    response = await adapter.comple",
+          "base_classes": [
+            "BaseLLMAdapter"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        }
+      ],
+      "functions": [],
+      "imports": {
+        "internal": [
+          "backend.adapters.llm.base",
+          "backend.core.interfaces.llm"
+        ],
+        "external": [
+          "anthropic",
+          "typing",
+          "os",
+          "json"
+        ]
+      },
+      "exports": [],
+      "constants": [],
+      "purpose": "Anthropic LLM Adapter",
+      "key_responsibilities": [],
+      "module_docstring": "Anthropic LLM Adapter\n\nImplements the LLMProvider interface for Anthropic's Claude API.",
+      "has_type_hints": true,
+      "has_docstrings": true,
+      "is_test_file": false,
+      "security_flags": [
+        "hardcoded_secret"
+      ],
+      "compliance_flags": [
+        "logging_sensitive"
+      ],
+      "last_analyzed": "2026-01-10T14:18:48.895557"
+    },
+    "c:\\Kick this Uss\\OMNI\\backend\\adapters\\llm\\base.py": {
+      "file_path": "c:\\Kick this Uss\\OMNI\\backend\\adapters\\llm\\base.py",
+      "relative_path": "c:\\Kick this Uss\\OMNI\\backend\\adapters\\llm\\base.py",
+      "language": "python",
+      "lines_of_code": 100,
+      "classes": [
+        {
+          "name": "BaseLLMAdapter",
+          "methods": [
+            "__init__",
+            "default_model",
+            "default_embedding_model",
+            "_merge_config",
+            "_convert_messages",
+            "_handle_error"
+          ],
+          "docstring": "Base class for LLM adapters with common functionality.\n\nProvides:\n- Configuration management\n- Request/response logging\n- Error handling utilities\n- Rate limiting support",
+          "base_classes": [
+            "LLMProvider",
+            "ABC"
+          ],
+          "is_dataclass": false,
+          "is_abstract": true
+        }
+      ],
+      "functions": [],
+      "imports": {
+        "internal": [
+          "backend.core.interfaces.llm"
+        ],
+        "external": [
+          "abc",
+          "typing"
+        ]
+      },
+      "exports": [],
+      "constants": [],
+      "purpose": "Base LLM Adapter",
+      "key_responsibilities": [],
+      "module_docstring": "Base LLM Adapter\n\nProvides common functionality for all LLM adapters.",
+      "has_type_hints": true,
+      "has_docstrings": true,
+      "is_test_file": false,
+      "security_flags": [],
+      "compliance_flags": [
+        "logging_sensitive"
+      ],
+      "last_analyzed": "2026-01-10T14:18:48.898573"
+    },
+    "c:\\Kick this Uss\\OMNI\\backend\\adapters\\llm\\factory.py": {
+      "file_path": "c:\\Kick this Uss\\OMNI\\backend\\adapters\\llm\\factory.py",
+      "relative_path": "c:\\Kick this Uss\\OMNI\\backend\\adapters\\llm\\factory.py",
+      "language": "python",
+      "lines_of_code": 158,
+      "classes": [
+        {
+          "name": "LLMFactory",
+          "methods": [
+            "register",
+            "create",
+            "from_config",
+            "list_providers",
+            "create_with_health_check"
+          ],
+          "docstring": "Factory for creating LLM providers.\n\nSupports dynamic provider selection based on configuration.\n\nExample:\n    ```python\n    # Create from config\n    provider = LLMFactory.create(\"openai\", api_key=\"sk",
+          "base_classes": [],
+          "is_dataclass": false,
+          "is_abstract": false
+        }
+      ],
+      "functions": [],
+      "imports": {
+        "internal": [
+          "backend.core.interfaces.llm",
+          "backend.adapters.llm.openai_adapter",
+          "backend.adapters.llm.anthropic_adapter",
+          "backend.adapters.llm.local_adapter"
+        ],
+        "external": [
+          "typing"
+        ]
+      },
+      "exports": [],
+      "constants": [],
+      "purpose": "LLM Factory",
+      "key_responsibilities": [],
+      "module_docstring": "LLM Factory\n\nCreates LLM providers based on configuration.\nEnables easy swapping between providers.",
+      "has_type_hints": true,
+      "has_docstrings": true,
+      "is_test_file": false,
+      "security_flags": [
+        "hardcoded_secret"
+      ],
+      "compliance_flags": [],
+      "last_analyzed": "2026-01-10T14:18:48.902568"
+    },
+    "c:\\Kick this Uss\\OMNI\\backend\\adapters\\llm\\local_adapter.py": {
+      "file_path": "c:\\Kick this Uss\\OMNI\\backend\\adapters\\llm\\local_adapter.py",
+      "relative_path": "c:\\Kick this Uss\\OMNI\\backend\\adapters\\llm\\local_adapter.py",
+      "language": "python",
+      "lines_of_code": 257,
+      "classes": [
+        {
+          "name": "LocalLLMAdapter",
+          "methods": [
+            "__init__",
+            "provider_name",
+            "is_available",
+            "_get_client",
+            "complete",
+            "stream",
+            "embed",
+            "health_check",
+            "list_models",
+            "_handle_local_error"
+          ],
+          "docstring": "Local LLM adapter supporting LM Studio, Ollama, and llama.cpp.\n\nAll these tools provide OpenAI-compatible APIs, so we can use\nthe OpenAI client with a custom base URL.\n\nExample:\n    ```python\n    # LM",
+          "base_classes": [
+            "BaseLLMAdapter"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        }
+      ],
+      "functions": [],
+      "imports": {
+        "internal": [
+          "backend.adapters.llm.base",
+          "backend.core.interfaces.llm"
+        ],
+        "external": [
+          "openai",
+          "typing",
+          "os"
+        ]
+      },
+      "exports": [],
+      "constants": [],
+      "purpose": "Local LLM Adapter",
+      "key_responsibilities": [],
+      "module_docstring": "Local LLM Adapter\n\nImplements the LLMProvider interface for local LLMs via:\n- LM Studio (OpenAI-compatible API)\n- Ollama\n- llama.cpp server",
+      "has_type_hints": true,
+      "has_docstrings": true,
+      "is_test_file": false,
+      "security_flags": [
+        "hardcoded_secret"
+      ],
+      "compliance_flags": [
+        "logging_sensitive"
+      ],
+      "last_analyzed": "2026-01-10T14:18:48.907567"
+    },
+    "c:\\Kick this Uss\\OMNI\\backend\\adapters\\llm\\openai_adapter.py": {
+      "file_path": "c:\\Kick this Uss\\OMNI\\backend\\adapters\\llm\\openai_adapter.py",
+      "relative_path": "c:\\Kick this Uss\\OMNI\\backend\\adapters\\llm\\openai_adapter.py",
+      "language": "python",
+      "lines_of_code": 235,
+      "classes": [
+        {
+          "name": "OpenAIAdapter",
+          "methods": [
+            "__init__",
+            "provider_name",
+            "is_available",
+            "_get_client",
+            "complete",
+            "stream",
+            "embed",
+            "_handle_openai_error"
+          ],
+          "docstring": "OpenAI LLM adapter supporting GPT-4, GPT-3.5, and embeddings.\n\nExample:\n    ```python\n    adapter = OpenAIAdapter(\n        api_key=\"sk-...\",\n        default_model=\"gpt-4-turbo-preview\"\n    )\n    respo",
+          "base_classes": [
+            "BaseLLMAdapter"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        }
+      ],
+      "functions": [],
+      "imports": {
+        "internal": [
+          "backend.adapters.llm.base",
+          "backend.core.interfaces.llm"
+        ],
+        "external": [
+          "openai",
+          "typing",
+          "os"
+        ]
+      },
+      "exports": [],
+      "constants": [],
+      "purpose": "OpenAI LLM Adapter",
+      "key_responsibilities": [],
+      "module_docstring": "OpenAI LLM Adapter\n\nImplements the LLMProvider interface for OpenAI's API.\nSupports GPT-4, GPT-3.5, and embedding models.",
+      "has_type_hints": true,
+      "has_docstrings": true,
+      "is_test_file": false,
+      "security_flags": [
+        "hardcoded_secret"
+      ],
+      "compliance_flags": [
+        "logging_sensitive"
+      ],
+      "last_analyzed": "2026-01-10T14:18:48.912070"
+    },
+    "c:\\Kick this Uss\\OMNI\\backend\\adapters\\llm\\__init__.py": {
+      "file_path": "c:\\Kick this Uss\\OMNI\\backend\\adapters\\llm\\__init__.py",
+      "relative_path": "c:\\Kick this Uss\\OMNI\\backend\\adapters\\llm\\__init__.py",
+      "language": "python",
+      "lines_of_code": 20,
+      "classes": [],
+      "functions": [],
+      "imports": {
+        "internal": [
+          "backend.adapters.llm.base",
+          "backend.adapters.llm.openai_adapter",
+          "backend.adapters.llm.anthropic_adapter",
+          "backend.adapters.llm.local_adapter",
+          "backend.adapters.llm.factory"
+        ],
+        "external": []
+      },
+      "exports": [],
+      "constants": [],
+      "purpose": "LLM Adapters Package",
+      "key_responsibilities": [],
+      "module_docstring": "LLM Adapters Package\n\nProvides concrete implementations of the LLMProvider interface\nfor various LLM providers (OpenAI, Anthropic, local LLMs, etc.)",
+      "has_type_hints": false,
+      "has_docstrings": true,
+      "is_test_file": false,
+      "security_flags": [],
+      "compliance_flags": [],
+      "last_analyzed": "2026-01-10T14:18:48.914080"
+    },
+    "c:\\Kick this Uss\\OMNI\\backend\\adapters\\vectordb\\base.py": {
+      "file_path": "c:\\Kick this Uss\\OMNI\\backend\\adapters\\vectordb\\base.py",
+      "relative_path": "c:\\Kick this Uss\\OMNI\\backend\\adapters\\vectordb\\base.py",
+      "language": "python",
+      "lines_of_code": 67,
+      "classes": [
+        {
+          "name": "BaseVectorDBAdapter",
+          "methods": [
+            "__init__",
+            "_validate_documents",
+            "_merge_search_config",
+            "_handle_error"
+          ],
+          "docstring": "Base class for vector database adapters with common functionality.\n\nProvides:\n- Configuration management\n- Connection handling\n- Error handling utilities",
+          "base_classes": [
+            "VectorDBProvider",
+            "ABC"
+          ],
+          "is_dataclass": false,
+          "is_abstract": true
+        }
+      ],
+      "functions": [],
+      "imports": {
+        "internal": [
+          "backend.core.interfaces.vectordb"
+        ],
+        "external": [
+          "abc",
+          "typing"
+        ]
+      },
+      "exports": [],
+      "constants": [],
+      "purpose": "Base Vector Database Adapter",
+      "key_responsibilities": [],
+      "module_docstring": "Base Vector Database Adapter\n\nProvides common functionality for all vector database adapters.",
+      "has_type_hints": true,
+      "has_docstrings": true,
+      "is_test_file": false,
+      "security_flags": [],
+      "compliance_flags": [],
+      "last_analyzed": "2026-01-10T14:18:48.918081"
+    },
+    "c:\\Kick this Uss\\OMNI\\backend\\adapters\\vectordb\\chroma_adapter.py": {
+      "file_path": "c:\\Kick this Uss\\OMNI\\backend\\adapters\\vectordb\\chroma_adapter.py",
+      "relative_path": "c:\\Kick this Uss\\OMNI\\backend\\adapters\\vectordb\\chroma_adapter.py",
+      "language": "python",
+      "lines_of_code": 345,
+      "classes": [
+        {
+          "name": "ChromaAdapter",
+          "methods": [
+            "__init__",
+            "provider_name",
+            "is_available",
+            "_get_client",
+            "_get_distance_fn",
+            "create_collection",
+            "delete_collection",
+            "collection_exists",
+            "list_collections",
+            "_get_collection",
+            "upsert",
+            "delete",
+            "search",
+            "get",
+            "count"
+          ],
+          "docstring": "ChromaDB vector database adapter.\n\nSupports persistent and in-memory modes.\n\nExample:\n    ```python\n    # Persistent mode\n    adapter = ChromaAdapter(persist_path=\"./chroma_data\")\n    \n    # In-memory",
+          "base_classes": [
+            "BaseVectorDBAdapter"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        }
+      ],
+      "functions": [],
+      "imports": {
+        "internal": [
+          "backend.adapters.vectordb.base",
+          "backend.core.interfaces.vectordb"
+        ],
+        "external": [
+          "typing",
+          "chromadb",
+          "os"
+        ]
+      },
+      "exports": [],
+      "constants": [],
+      "purpose": "ChromaDB Vector Database Adapter",
+      "key_responsibilities": [],
+      "module_docstring": "ChromaDB Vector Database Adapter\n\nImplements the VectorDBProvider interface for ChromaDB.",
+      "has_type_hints": true,
+      "has_docstrings": true,
+      "is_test_file": false,
+      "security_flags": [
+        "hardcoded_secret"
+      ],
+      "compliance_flags": [],
+      "last_analyzed": "2026-01-10T14:18:48.924487"
+    },
+    "c:\\Kick this Uss\\OMNI\\backend\\adapters\\vectordb\\factory.py": {
+      "file_path": "c:\\Kick this Uss\\OMNI\\backend\\adapters\\vectordb\\factory.py",
+      "relative_path": "c:\\Kick this Uss\\OMNI\\backend\\adapters\\vectordb\\factory.py",
+      "language": "python",
+      "lines_of_code": 104,
+      "classes": [
+        {
+          "name": "VectorDBFactory",
+          "methods": [
+            "register",
+            "create",
+            "from_config",
+            "list_providers",
+            "create_with_health_check"
+          ],
+          "docstring": "Factory for creating vector database providers.\n\nExample:\n    ```python\n    # Create from config\n    db = VectorDBFactory.create(\"qdrant\", url=\"localhost:6333\")\n    \n    # Or from config dict\n    db =",
+          "base_classes": [],
+          "is_dataclass": false,
+          "is_abstract": false
+        }
+      ],
+      "functions": [],
+      "imports": {
+        "internal": [
+          "backend.core.interfaces.vectordb",
+          "backend.adapters.vectordb.qdrant_adapter",
+          "backend.adapters.vectordb.chroma_adapter",
+          "backend.adapters.vectordb.faiss_adapter"
+        ],
+        "external": [
+          "typing"
+        ]
+      },
+      "exports": [],
+      "constants": [],
+      "purpose": "Vector Database Factory",
+      "key_responsibilities": [],
+      "module_docstring": "Vector Database Factory\n\nCreates vector database providers based on configuration.",
+      "has_type_hints": true,
+      "has_docstrings": true,
+      "is_test_file": false,
+      "security_flags": [],
+      "compliance_flags": [],
+      "last_analyzed": "2026-01-10T14:18:48.928464"
+    },
+    "c:\\Kick this Uss\\OMNI\\backend\\adapters\\vectordb\\faiss_adapter.py": {
+      "file_path": "c:\\Kick this Uss\\OMNI\\backend\\adapters\\vectordb\\faiss_adapter.py",
+      "relative_path": "c:\\Kick this Uss\\OMNI\\backend\\adapters\\vectordb\\faiss_adapter.py",
+      "language": "python",
+      "lines_of_code": 413,
+      "classes": [
+        {
+          "name": "FAISSCollection",
+          "methods": [],
+          "docstring": "Internal representation of a FAISS collection.",
+          "base_classes": [],
+          "is_dataclass": true,
+          "is_abstract": false
+        },
+        {
+          "name": "FAISSAdapter",
+          "methods": [
+            "__init__",
+            "provider_name",
+            "is_available",
+            "_get_faiss",
+            "_get_index_type",
+            "_collection_path",
+            "_metadata_path",
+            "_save_collection",
+            "_load_collections",
+            "create_collection",
+            "delete_collection",
+            "collection_exists",
+            "list_collections",
+            "upsert",
+            "delete"
+          ],
+          "docstring": "FAISS vector database adapter.\n\nSupports in-memory and disk-persisted indexes.\n\nExample:\n    ```python\n    # In-memory mode\n    adapter = FAISSAdapter()\n    \n    # Persistent mode\n    adapter = FAISSA",
+          "base_classes": [
+            "BaseVectorDBAdapter"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        }
+      ],
+      "functions": [],
+      "imports": {
+        "internal": [
+          "backend.adapters.vectordb.base",
+          "backend.core.interfaces.vectordb"
+        ],
+        "external": [
+          "faiss",
+          "dataclasses",
+          "typing",
+          "json",
+          "os",
+          "numpy",
+          "pickle",
+          "pathlib"
+        ]
+      },
+      "exports": [],
+      "constants": [],
+      "purpose": "FAISS Vector Database Adapter",
+      "key_responsibilities": [],
+      "module_docstring": "FAISS Vector Database Adapter\n\nImplements the VectorDBProvider interface for FAISS.\nFAISS is primarily for in-memory/local use with optional disk persistence.",
+      "has_type_hints": true,
+      "has_docstrings": true,
+      "is_test_file": false,
+      "security_flags": [],
+      "compliance_flags": [],
+      "last_analyzed": "2026-01-10T14:18:48.937686"
+    },
+    "c:\\Kick this Uss\\OMNI\\backend\\adapters\\vectordb\\qdrant_adapter.py": {
+      "file_path": "c:\\Kick this Uss\\OMNI\\backend\\adapters\\vectordb\\qdrant_adapter.py",
+      "relative_path": "c:\\Kick this Uss\\OMNI\\backend\\adapters\\vectordb\\qdrant_adapter.py",
+      "language": "python",
+      "lines_of_code": 354,
+      "classes": [
+        {
+          "name": "QdrantAdapter",
+          "methods": [
+            "__init__",
+            "provider_name",
+            "is_available",
+            "_get_client",
+            "_get_distance",
+            "create_collection",
+            "delete_collection",
+            "collection_exists",
+            "list_collections",
+            "upsert",
+            "delete",
+            "search",
+            "get",
+            "count"
+          ],
+          "docstring": "Qdrant vector database adapter.\n\nSupports both local (in-memory/disk) and cloud Qdrant instances.\n\nExample:\n    ```python\n    # Cloud instance\n    adapter = QdrantAdapter(\n        url=\"https://your-cl",
+          "base_classes": [
+            "BaseVectorDBAdapter"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        }
+      ],
+      "functions": [],
+      "imports": {
+        "internal": [
+          "backend.adapters.vectordb.base",
+          "backend.core.interfaces.vectordb"
+        ],
+        "external": [
+          "qdrant_client",
+          "typing",
+          "os"
+        ]
+      },
+      "exports": [],
+      "constants": [],
+      "purpose": "Qdrant Vector Database Adapter",
+      "key_responsibilities": [],
+      "module_docstring": "Qdrant Vector Database Adapter\n\nImplements the VectorDBProvider interface for Qdrant.",
+      "has_type_hints": true,
+      "has_docstrings": true,
+      "is_test_file": false,
+      "security_flags": [
+        "hardcoded_secret"
+      ],
+      "compliance_flags": [],
+      "last_analyzed": "2026-01-10T14:18:48.944698"
+    },
+    "c:\\Kick this Uss\\OMNI\\backend\\adapters\\vectordb\\__init__.py": {
+      "file_path": "c:\\Kick this Uss\\OMNI\\backend\\adapters\\vectordb\\__init__.py",
+      "relative_path": "c:\\Kick this Uss\\OMNI\\backend\\adapters\\vectordb\\__init__.py",
+      "language": "python",
+      "lines_of_code": 20,
+      "classes": [],
+      "functions": [],
+      "imports": {
+        "internal": [
+          "backend.adapters.vectordb.base",
+          "backend.adapters.vectordb.qdrant_adapter",
+          "backend.adapters.vectordb.chroma_adapter",
+          "backend.adapters.vectordb.faiss_adapter",
+          "backend.adapters.vectordb.factory"
+        ],
+        "external": []
+      },
+      "exports": [],
+      "constants": [],
+      "purpose": "Vector Database Adapters Package",
+      "key_responsibilities": [],
+      "module_docstring": "Vector Database Adapters Package\n\nProvides concrete implementations of the VectorDBProvider interface\nfor various vector databases (Qdrant, Chroma, FAISS, etc.)",
+      "has_type_hints": false,
+      "has_docstrings": true,
+      "is_test_file": false,
+      "security_flags": [],
+      "compliance_flags": [],
+      "last_analyzed": "2026-01-10T14:18:48.946691"
+    },
+    "c:\\Kick this Uss\\OMNI\\backend\\agents\\base_agents.py": {
+      "file_path": "c:\\Kick this Uss\\OMNI\\backend\\agents\\base_agents.py",
+      "relative_path": "c:\\Kick this Uss\\OMNI\\backend\\agents\\base_agents.py",
+      "language": "python",
+      "lines_of_code": 348,
+      "classes": [
+        {
+          "name": "AssistantAgent",
+          "methods": [
+            "__init__",
+            "metadata",
+            "set_llm",
+            "get_system_prompt",
+            "process"
+          ],
+          "docstring": "General-purpose assistant agent.\n\nProvides conversational AI capabilities with tool use support.",
+          "base_classes": [
+            "AgentBase"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "CodeAgent",
+          "methods": [
+            "__init__",
+            "metadata",
+            "set_llm",
+            "get_system_prompt",
+            "process"
+          ],
+          "docstring": "Specialized agent for code-related tasks.\n\nHandles code generation, review, and analysis.",
+          "base_classes": [
+            "AgentBase"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "PlannerAgent",
+          "methods": [
+            "__init__",
+            "metadata",
+            "set_llm",
+            "get_system_prompt",
+            "process"
+          ],
+          "docstring": "Planning and orchestration agent.\n\nBreaks down complex tasks and coordinates other agents.",
+          "base_classes": [
+            "AgentBase"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        }
+      ],
+      "functions": [],
+      "imports": {
+        "internal": [
+          "backend.core.interfaces.agent",
+          "backend.core.interfaces.llm"
+        ],
+        "external": [
+          "json",
+          "typing"
+        ]
+      },
+      "exports": [],
+      "constants": [],
+      "purpose": "Base Agent Implementations",
+      "key_responsibilities": [
+        "Agent logic and behavior implementation",
+        "`AssistantAgent`: AI agent implementation",
+        "`CodeAgent`: AI agent implementation",
+        "`PlannerAgent`: AI agent implementation"
+      ],
+      "module_docstring": "Base Agent Implementations\n\nProvides foundational agent types that can be extended.",
+      "has_type_hints": true,
+      "has_docstrings": true,
+      "is_test_file": false,
+      "security_flags": [],
+      "compliance_flags": [],
+      "last_analyzed": "2026-01-10T14:18:48.952689"
+    },
+    "c:\\Kick this Uss\\OMNI\\backend\\agents\\coding_agent.py": {
+      "file_path": "c:\\Kick this Uss\\OMNI\\backend\\agents\\coding_agent.py",
+      "relative_path": "c:\\Kick this Uss\\OMNI\\backend\\agents\\coding_agent.py",
+      "language": "python",
+      "lines_of_code": 735,
+      "classes": [
+        {
+          "name": "PatchValidationError",
+          "methods": [],
+          "docstring": "Raised when a patch fails validation.",
+          "base_classes": [
+            "Exception"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "PatchType",
+          "methods": [],
+          "docstring": "Types of code changes.",
+          "base_classes": [
+            "str",
+            "Enum"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "PatchResult",
+          "methods": [
+            "to_dict"
+          ],
+          "docstring": "Result of code generation - always a patch.",
+          "base_classes": [],
+          "is_dataclass": true,
+          "is_abstract": false
+        },
+        {
+          "name": "CodingAgentConfig",
+          "methods": [],
+          "docstring": "Configuration for coding agent.",
+          "base_classes": [],
+          "is_dataclass": true,
+          "is_abstract": false
+        },
+        {
+          "name": "CodingAgent",
+          "methods": [
+            "__init__",
+            "metadata",
+            "set_llm",
+            "set_rag",
+            "set_context_agent",
+            "set_rag_agent",
+            "process",
+            "_error",
+            "generate_patch",
+            "_get_rag_context",
+            "_get_project_context",
+            "_register_generated_file",
+            "_is_restricted_file",
+            "_extract_diff",
+            "_extract_code"
+          ],
+          "docstring": "Coding agent that produces patches only.\n\nThis agent:\n- NEVER writes files - only produces unified diffs\n- Validates all patches before returning\n- Uses RAG context for better code understanding\n- Rej",
+          "base_classes": [
+            "AgentBase"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        }
+      ],
+      "functions": [],
+      "imports": {
+        "internal": [
+          "backend.core.interfaces.agent",
+          "backend.core.interfaces.llm"
+        ],
+        "external": [
+          "logging",
+          "dataclasses",
+          "re",
+          "enum",
+          "typing",
+          "datetime",
+          "json",
+          "fnmatch",
+          "pathlib",
+          "difflib"
+        ]
+      },
+      "exports": [],
+      "constants": [
+        "FEATURE",
+        "BUGFIX",
+        "REFACTOR",
+        "TEST",
+        "DOCS",
+        "PROMPT_TEMPLATE",
+        "PROMPT_TEMPLATE_WITH_CONTEXT"
+      ],
+      "purpose": "Coding Agent Plugin",
+      "key_responsibilities": [
+        "Agent logic and behavior implementation",
+        "`CodingAgent`: AI agent implementation"
+      ],
+      "module_docstring": "Coding Agent Plugin\n\nA coding agent that ONLY produces patches (unified diff format).\nThis agent:\n1. NEVER writes files directly\n2. Outputs only unified diff format\n3. Receives RAG context + user intent\n4. Validates patches before returning\n\nSafety guarantees:\n- Agent has NO file write capability\n- ",
+      "has_type_hints": true,
+      "has_docstrings": true,
+      "is_test_file": false,
+      "security_flags": [],
+      "compliance_flags": [
+        "logging_sensitive"
+      ],
+      "last_analyzed": "2026-01-10T14:18:48.965691"
+    },
+    "c:\\Kick this Uss\\OMNI\\backend\\agents\\compliance_agent.py": {
+      "file_path": "c:\\Kick this Uss\\OMNI\\backend\\agents\\compliance_agent.py",
+      "relative_path": "c:\\Kick this Uss\\OMNI\\backend\\agents\\compliance_agent.py",
+      "language": "python",
+      "lines_of_code": 948,
+      "classes": [
+        {
+          "name": "ComplianceSeverity",
+          "methods": [],
+          "docstring": "Compliance finding severity.",
+          "base_classes": [
+            "str",
+            "Enum"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "ComplianceStatus",
+          "methods": [],
+          "docstring": "Compliance check status.",
+          "base_classes": [
+            "str",
+            "Enum"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "ComplianceRule",
+          "methods": [],
+          "docstring": "A single compliance rule.\n\nRules are loaded from external files and define what to check.",
+          "base_classes": [],
+          "is_dataclass": true,
+          "is_abstract": false
+        },
+        {
+          "name": "ComplianceFinding",
+          "methods": [
+            "to_dict"
+          ],
+          "docstring": "A compliance finding from rule evaluation.",
+          "base_classes": [],
+          "is_dataclass": true,
+          "is_abstract": false
+        },
+        {
+          "name": "ComplianceAgentConfig",
+          "methods": [],
+          "docstring": "Configuration for compliance agent.",
+          "base_classes": [],
+          "is_dataclass": true,
+          "is_abstract": false
+        },
+        {
+          "name": "ComplianceAgent",
+          "methods": [
+            "__init__",
+            "metadata",
+            "set_llm",
+            "set_rag",
+            "set_context_agent",
+            "set_rag_agent",
+            "validate_code",
+            "_detect_data_types",
+            "_check_code_compliance",
+            "_check_gdpr_compliance",
+            "_check_hipaa_compliance",
+            "_check_pci_compliance",
+            "_check_auth_compliance",
+            "_evaluate_rule",
+            "load_rules"
+          ],
+          "docstring": "Compliance checking agent using external rulesets.\n\nThis agent:\n- Loads rules from JSON/YAML files (no hardcoded regulations)\n- Is jurisdiction-agnostic\n- Works with empty rulesets (no-op, not an erro",
+          "base_classes": [
+            "AgentBase"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        }
+      ],
+      "functions": [],
+      "imports": {
+        "internal": [
+          "backend.core.interfaces.agent",
+          "backend.core.interfaces.llm"
+        ],
+        "external": [
+          "logging",
+          "dataclasses",
+          "re",
+          "enum",
+          "typing",
+          "datetime",
+          "json",
+          "fnmatch",
+          "yaml",
+          "pathlib"
+        ]
+      },
+      "exports": [],
+      "constants": [
+        "CRITICAL",
+        "MAJOR",
+        "MINOR",
+        "ADVISORY",
+        "PASS",
+        "FAIL",
+        "WARNING",
+        "NOT_APPLICABLE",
+        "MANUAL_REVIEW"
+      ],
+      "purpose": "Compliance Agent Plugin",
+      "key_responsibilities": [
+        "Agent logic and behavior implementation",
+        "`ComplianceAgent`: AI agent implementation"
+      ],
+      "module_docstring": "Compliance Agent Plugin\n\nA compliance checking agent that:\n1. Loads rules from external JSON/YAML files\n2. Is jurisdiction-agnostic (no hardcoded regulations)\n3. Optionally enriches with RAG context\n4. Never crashes on missing rules (empty ruleset = no-op)\n\nSafety guarantees:\n- Rules are external, n",
+      "has_type_hints": true,
+      "has_docstrings": true,
+      "is_test_file": false,
+      "security_flags": [],
+      "compliance_flags": [
+        "pii_handling",
+        "logging_sensitive"
+      ],
+      "last_analyzed": "2026-01-10T14:18:48.981690"
+    },
+    "c:\\Kick this Uss\\OMNI\\backend\\agents\\context_agent.py": {
+      "file_path": "c:\\Kick this Uss\\OMNI\\backend\\agents\\context_agent.py",
+      "relative_path": "c:\\Kick this Uss\\OMNI\\backend\\agents\\context_agent.py",
+      "language": "python",
+      "lines_of_code": 1636,
+      "classes": [
+        {
+          "name": "DetailedFileSummary",
+          "methods": [
+            "to_dict",
+            "from_dict",
+            "to_compact_string",
+            "to_markdown"
+          ],
+          "docstring": "Detailed summary of a single file - the UNIFIED format.\n\nThis replaces the old short summaries (~200 chars) with comprehensive\ninformation that's useful for both runtime queries and Copilot files.\n\nMe",
+          "base_classes": [],
+          "is_dataclass": true,
+          "is_abstract": false
+        },
+        {
+          "name": "ContextAgentConfig",
+          "methods": [],
+          "docstring": "Configuration for Context Agent.",
+          "base_classes": [],
+          "is_dataclass": true,
+          "is_abstract": false
+        },
+        {
+          "name": "ProjectStructure",
+          "methods": [
+            "increment_version",
+            "on_change",
+            "to_dict",
+            "from_dict",
+            "_guess_language",
+            "get_summary_for_prompt",
+            "_is_backend_file",
+            "_is_frontend_file",
+            "requires_both_tiers",
+            "get_file",
+            "get_files_by_language",
+            "get_files_with_security_issues",
+            "get_files_with_compliance_issues",
+            "search_by_class",
+            "search_by_function"
+          ],
+          "docstring": "Persistent knowledge about the project structure.\n\nUNIFIED APPROACH: Uses DetailedFileSummary for ALL files instead of\nseparate short summaries. This provides:\n- Complete semantic information for runt",
+          "base_classes": [],
+          "is_dataclass": true,
+          "is_abstract": false
+        },
+        {
+          "name": "ImportantFact",
+          "methods": [
+            "to_dict"
+          ],
+          "docstring": "An important fact extracted from conversation.",
+          "base_classes": [],
+          "is_dataclass": true,
+          "is_abstract": false
+        },
+        {
+          "name": "CurrentTask",
+          "methods": [
+            "to_dict"
+          ],
+          "docstring": "Tracks the current task being worked on.",
+          "base_classes": [],
+          "is_dataclass": true,
+          "is_abstract": false
+        },
+        {
+          "name": "ContextAgent",
+          "methods": [
+            "__init__",
+            "_get_persistence_path",
+            "_load_project_structure",
+            "_save_project_structure",
+            "set_workspace",
+            "reload_project_structure",
+            "save_project_structure",
+            "metadata",
+            "set_llm",
+            "process",
+            "_extract_facts",
+            "_extract_facts_with_llm",
+            "_store_facts",
+            "_detect_task",
+            "_summarize_history"
+          ],
+          "docstring": "Agent that manages global session context.\n\nThis agent is responsible for:\n1. Extracting important information from every message\n2. Maintaining a summary of the conversation\n3. Coordinating informati",
+          "base_classes": [
+            "AgentBase"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        }
+      ],
+      "functions": [],
+      "imports": {
+        "internal": [
+          "backend.core.interfaces.agent",
+          "backend.core.interfaces.llm",
+          "backend.core.state",
+          "backend.utils.gitignore",
+          "backend.integrations.file_analyzer",
+          "backend.integrations.file_analyzer"
+        ],
+        "external": [
+          "logging",
+          "dataclasses",
+          "re",
+          "typing",
+          "datetime",
+          "json",
+          "os",
+          "pathlib"
+        ]
+      },
+      "exports": [],
+      "constants": [
+        "FILE_PATTERN",
+        "ERROR_PATTERN",
+        "SECURITY_PATTERN",
+        "COMPLIANCE_PATTERN",
+        "TASK_PATTERNS",
+        "BACKEND_PATTERNS",
+        "FRONTEND_PATTERNS",
+        "DATABASE_PATTERNS"
+      ],
+      "purpose": "Context Agent",
+      "key_responsibilities": [
+        "Agent logic and behavior implementation",
+        "`ContextAgent`: AI agent implementation"
+      ],
+      "module_docstring": "Context Agent\n\nManages global session context, memory, and inter-agent coordination.\nThis agent is always active and processes every message to maintain state.\n\nThis agent:\n- Extracts important information from messages\n- Maintains session summary and memory\n- Coordinates findings between agents\n- M",
+      "has_type_hints": true,
+      "has_docstrings": true,
+      "is_test_file": false,
+      "security_flags": [],
+      "compliance_flags": [
+        "logging_sensitive"
+      ],
+      "last_analyzed": "2026-01-10T14:18:49.024927"
+    },
+    "c:\\Kick this Uss\\OMNI\\backend\\agents\\loader.py": {
+      "file_path": "c:\\Kick this Uss\\OMNI\\backend\\agents\\loader.py",
+      "relative_path": "c:\\Kick this Uss\\OMNI\\backend\\agents\\loader.py",
+      "language": "python",
+      "lines_of_code": 485,
+      "classes": [
+        {
+          "name": "AgentRegistry",
+          "methods": [
+            "__init__",
+            "register",
+            "unregister",
+            "enable",
+            "disable",
+            "is_enabled",
+            "get",
+            "get_class",
+            "get_metadata",
+            "get_info",
+            "get_all_info",
+            "list_agents",
+            "list_metadata",
+            "has",
+            "create_instance"
+          ],
+          "docstring": "Registry for agent plugins.\n\nMaintains a catalog of available agents and their metadata.\nSupports enabling/disabling agents without removing them.\n\nExample:\n    ```python\n    registry = AgentRegistry(",
+          "base_classes": [],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "AgentLoader",
+          "methods": [
+            "__init__",
+            "load_builtin_agents",
+            "load_from_directory",
+            "load_file",
+            "load_module",
+            "_register_agents_from_module",
+            "reload_agent",
+            "discover_plugins"
+          ],
+          "docstring": "Dynamic agent plugin loader.\n\nLoads agent plugins from:\n- Built-in agents directory\n- Custom plugin directories\n- Python modules\n\nExample:\n    ```python\n    loader = AgentLoader(registry)\n    \n    # L",
+          "base_classes": [],
+          "is_dataclass": false,
+          "is_abstract": false
+        }
+      ],
+      "functions": [],
+      "imports": {
+        "internal": [
+          "backend.core.interfaces.agent",
+          "backend.agents.base_agents",
+          "backend.agents.security_agent",
+          "backend.agents.compliance_agent",
+          "backend.agents.context_agent",
+          "backend.agents.rag_agent"
+        ],
+        "external": [
+          "sys",
+          "typing",
+          "os",
+          "pathlib",
+          "importlib"
+        ]
+      },
+      "exports": [],
+      "constants": [],
+      "purpose": "Agent Loader and Registry",
+      "key_responsibilities": [
+        "Agent logic and behavior implementation"
+      ],
+      "module_docstring": "Agent Loader and Registry\n\nHandles dynamic loading of agent plugins and registration.",
+      "has_type_hints": true,
+      "has_docstrings": true,
+      "is_test_file": false,
+      "security_flags": [],
+      "compliance_flags": [],
+      "last_analyzed": "2026-01-10T14:18:49.032936"
+    },
+    "c:\\Kick this Uss\\OMNI\\backend\\agents\\orchestrator.py": {
+      "file_path": "c:\\Kick this Uss\\OMNI\\backend\\agents\\orchestrator.py",
+      "relative_path": "c:\\Kick this Uss\\OMNI\\backend\\agents\\orchestrator.py",
+      "language": "python",
+      "lines_of_code": 708,
+      "classes": [
+        {
+          "name": "AgentOrchestrator",
+          "methods": [
+            "__init__",
+            "add_agent",
+            "_wire_agent_integrations",
+            "remove_agent",
+            "add_hook",
+            "_emit",
+            "clear_history",
+            "get_project_summary",
+            "is_fullstack_project",
+            "get_relevant_context",
+            "validate_code",
+            "register_file",
+            "send_to_agent",
+            "send_to_agent_with_retry",
+            "run_sequential"
+          ],
+          "docstring": "Orchestrates multi-agent conversations and workflows.\n\nSupports various patterns:\n- Sequential: Agents respond in order\n- Round-robin: Agents take turns\n- Selector: An agent selects the next speaker\n-",
+          "base_classes": [],
+          "is_dataclass": false,
+          "is_abstract": false
+        }
+      ],
+      "functions": [],
+      "imports": {
+        "internal": [
+          "backend.core.interfaces.agent",
+          "backend.core.interfaces.llm",
+          "backend.core.exceptions",
+          "backend.core.retry",
+          "backend.agents.loader"
+        ],
+        "external": [
+          "uuid",
+          "logging",
+          "asyncio",
+          "typing"
+        ]
+      },
+      "exports": [],
+      "constants": [],
+      "purpose": "Agent Orchestrator",
+      "key_responsibilities": [
+        "Agent logic and behavior implementation"
+      ],
+      "module_docstring": "Agent Orchestrator\n\nCoordinates multiple agents using AutoGen patterns.",
+      "has_type_hints": true,
+      "has_docstrings": true,
+      "is_test_file": false,
+      "security_flags": [],
+      "compliance_flags": [
+        "logging_sensitive"
+      ],
+      "last_analyzed": "2026-01-10T14:18:49.045983"
+    },
+    "c:\\Kick this Uss\\OMNI\\backend\\agents\\rag_agent.py": {
+      "file_path": "c:\\Kick this Uss\\OMNI\\backend\\agents\\rag_agent.py",
+      "relative_path": "c:\\Kick this Uss\\OMNI\\backend\\agents\\rag_agent.py",
+      "language": "python",
+      "lines_of_code": 1000,
+      "classes": [
+        {
+          "name": "RAGAgentConfig",
+          "methods": [],
+          "docstring": "Configuration for RAG Agent.",
+          "base_classes": [],
+          "is_dataclass": true,
+          "is_abstract": false
+        },
+        {
+          "name": "FileSummary",
+          "methods": [
+            "to_dict",
+            "to_compact_string"
+          ],
+          "docstring": "Compact file summary for token-efficient retrieval.\nInstead of returning 50k of raw code, we return ~200 chars of summary.",
+          "base_classes": [],
+          "is_dataclass": true,
+          "is_abstract": false
+        },
+        {
+          "name": "RAGQueryResult",
+          "methods": [
+            "to_dict"
+          ],
+          "docstring": "Result from a RAG query.",
+          "base_classes": [],
+          "is_dataclass": true,
+          "is_abstract": false
+        },
+        {
+          "name": "RAGAgent",
+          "methods": [
+            "__init__",
+            "metadata",
+            "set_llm",
+            "set_rag_service",
+            "is_available",
+            "process",
+            "_get_unavailable_reason",
+            "_select_domains",
+            "_select_domains_with_llm",
+            "_optimize_query",
+            "_optimize_query_with_llm",
+            "_search",
+            "_filter_results",
+            "_result_to_dict",
+            "_format_context"
+          ],
+          "docstring": "Agent that intelligently manages RAG operations.\n\nUnlike the passive RAGService, this agent:\n1. DECIDES which domains to search based on query intent\n2. OPTIMIZES queries for better retrieval\n3. FILTE",
+          "base_classes": [
+            "AgentBase"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "RAGService",
+          "methods": [],
+          "docstring": "",
+          "base_classes": [],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "RAGResult",
+          "methods": [],
+          "docstring": "",
+          "base_classes": [],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "RAGConfig",
+          "methods": [],
+          "docstring": "",
+          "base_classes": [],
+          "is_dataclass": false,
+          "is_abstract": false
+        }
+      ],
+      "functions": [],
+      "imports": {
+        "internal": [
+          "backend.core.interfaces.agent",
+          "backend.core.interfaces.llm",
+          "backend.rag.service"
+        ],
+        "external": [
+          "logging",
+          "dataclasses",
+          "re",
+          "typing",
+          "datetime"
+        ]
+      },
+      "exports": [],
+      "constants": [
+        "RAG_SERVICE_AVAILABLE",
+        "DOMAIN_PATTERNS",
+        "NOISE_WORDS",
+        "RAG_SERVICE_AVAILABLE"
+      ],
+      "purpose": "RAG Agent",
+      "key_responsibilities": [
+        "Agent logic and behavior implementation",
+        "`RAGAgent`: AI agent implementation",
+        "`RAGService`: Business logic service"
+      ],
+      "module_docstring": "RAG Agent\n\nIntelligent agent that manages Retrieval-Augmented Generation.\nDecides what to search, which domains to query, and filters results.\n\nThis agent:\n- Wraps the existing RAGService with intelligent decision-making\n- Selects appropriate domains based on query intent\n- Optimizes queries for bet",
+      "has_type_hints": true,
+      "has_docstrings": true,
+      "is_test_file": false,
+      "security_flags": [],
+      "compliance_flags": [
+        "logging_sensitive"
+      ],
+      "last_analyzed": "2026-01-10T14:18:49.064971"
+    },
+    "c:\\Kick this Uss\\OMNI\\backend\\agents\\security_agent.py": {
+      "file_path": "c:\\Kick this Uss\\OMNI\\backend\\agents\\security_agent.py",
+      "relative_path": "c:\\Kick this Uss\\OMNI\\backend\\agents\\security_agent.py",
+      "language": "python",
+      "lines_of_code": 756,
+      "classes": [
+        {
+          "name": "Severity",
+          "methods": [],
+          "docstring": "Security finding severity levels.",
+          "base_classes": [
+            "str",
+            "Enum"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "FindingCategory",
+          "methods": [],
+          "docstring": "Categories of security findings.",
+          "base_classes": [
+            "str",
+            "Enum"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "SecurityFinding",
+          "methods": [
+            "to_dict"
+          ],
+          "docstring": "A single security finding.\n\nStructured output format for security issues.",
+          "base_classes": [],
+          "is_dataclass": true,
+          "is_abstract": false
+        },
+        {
+          "name": "SecurityAgentConfig",
+          "methods": [],
+          "docstring": "Configuration for security agent.",
+          "base_classes": [],
+          "is_dataclass": true,
+          "is_abstract": false
+        },
+        {
+          "name": "SecurityAgent",
+          "methods": [
+            "__init__",
+            "metadata",
+            "set_llm",
+            "set_context_agent",
+            "set_rag_agent",
+            "validate_code",
+            "_analyze_code_string",
+            "_quick_security_checks",
+            "_enrich_findings_with_context",
+            "process",
+            "_handle_analyze",
+            "_handle_check_file",
+            "_handle_status",
+            "_run_semgrep",
+            "_parse_semgrep_output"
+          ],
+          "docstring": "Read-only security analysis agent.\n\nThis agent:\n- NEVER writes files\n- Runs Semgrep for static analysis\n- Optionally uses LLM for interpretation\n- Produces structured security findings\n\nExample:\n    `",
+          "base_classes": [
+            "AgentBase"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        }
+      ],
+      "functions": [],
+      "imports": {
+        "internal": [
+          "backend.core.interfaces.agent",
+          "backend.core.interfaces.llm",
+          "backend.core.interfaces.llm"
+        ],
+        "external": [
+          "logging",
+          "subprocess",
+          "dataclasses",
+          "re",
+          "enum",
+          "typing",
+          "datetime",
+          "json",
+          "tempfile",
+          "pathlib"
+        ]
+      },
+      "exports": [],
+      "constants": [
+        "CRITICAL",
+        "HIGH",
+        "MEDIUM",
+        "LOW",
+        "INFO",
+        "INJECTION",
+        "XSS",
+        "AUTHENTICATION",
+        "AUTHORIZATION",
+        "CRYPTOGRAPHY",
+        "SECRETS",
+        "CONFIGURATION",
+        "DEPENDENCY",
+        "OTHER"
+      ],
+      "purpose": "Security Agent Plugin",
+      "key_responsibilities": [
+        "Agent logic and behavior implementation",
+        "`SecurityAgent`: AI agent implementation"
+      ],
+      "module_docstring": "Security Agent Plugin\n\nA read-only security analysis agent that:\n1. Runs Semgrep first (static analysis)\n2. Optionally uses LLM for interpretation (disabled by default)\n3. Never writes files - only produces findings\n\nSafety guarantees:\n- Agent has NO file write access\n- Semgrep rules are configurabl",
+      "has_type_hints": true,
+      "has_docstrings": true,
+      "is_test_file": false,
+      "security_flags": [
+        "shell_injection",
+        "eval_usage"
+      ],
+      "compliance_flags": [
+        "logging_sensitive"
+      ],
+      "last_analyzed": "2026-01-10T14:18:49.078967"
+    },
+    "c:\\Kick this Uss\\OMNI\\backend\\agents\\workflow.py": {
+      "file_path": "c:\\Kick this Uss\\OMNI\\backend\\agents\\workflow.py",
+      "relative_path": "c:\\Kick this Uss\\OMNI\\backend\\agents\\workflow.py",
+      "language": "python",
+      "lines_of_code": 1019,
+      "classes": [
+        {
+          "name": "WorkflowResult",
+          "methods": [
+            "to_dict",
+            "get_summary"
+          ],
+          "docstring": "Result from a complete workflow execution.",
+          "base_classes": [],
+          "is_dataclass": true,
+          "is_abstract": false
+        },
+        {
+          "name": "WorkflowOrchestrator",
+          "methods": [
+            "__init__",
+            "_emit_progress",
+            "analyze_workspace",
+            "analyze_file",
+            "_get_agent",
+            "_analyze_project_structure",
+            "_scan_directory",
+            "_read_file_safe",
+            "_get_language",
+            "_run_security_analysis",
+            "_run_compliance_check",
+            "get_status",
+            "_generate_copilot_files",
+            "_detect_project_type",
+            "_detect_languages"
+          ],
+          "docstring": "Orchestrates the full analysis workflow.\n\nFlow:\n1. CONTEXT AGENT: Analyze project structure, create summary\n2. RAG AGENT: Index files using context, create knowledge base\n3. SECURITY AGENT: Analyze co",
+          "base_classes": [],
+          "is_dataclass": false,
+          "is_abstract": false
+        }
+      ],
+      "functions": [],
+      "imports": {
+        "internal": [
+          "backend.core.interfaces.agent",
+          "backend.agents.orchestrator",
+          "backend.integrations.copilot_integration",
+          "backend.integrations.file_analyzer",
+          "backend.integrations.copilot_integration"
+        ],
+        "external": [
+          "logging",
+          "dataclasses",
+          "typing",
+          "datetime",
+          "pathlib",
+          "asyncio"
+        ]
+      },
+      "exports": [],
+      "constants": [],
+      "purpose": "Workflow Orchestrator",
+      "key_responsibilities": [
+        "Agent logic and behavior implementation"
+      ],
+      "module_docstring": "Workflow Orchestrator\n\nCoordinates the full agent pipeline:\n1. Context Agent → Analyzes project structure\n2. RAG Agent → Indexes files, creates knowledge base\n3. Security Agent → Analyzes vulnerabilities using context\n4. Compliance Agent → Checks compliance using context\n\nThis is the main entry poin",
+      "has_type_hints": true,
+      "has_docstrings": true,
+      "is_test_file": false,
+      "security_flags": [
+        "shell_injection",
+        "eval_usage",
+        "pickle_usage"
+      ],
+      "compliance_flags": [
+        "logging_sensitive"
+      ],
+      "last_analyzed": "2026-01-10T14:18:49.106156"
+    },
+    "c:\\Kick this Uss\\OMNI\\backend\\agents\\__init__.py": {
+      "file_path": "c:\\Kick this Uss\\OMNI\\backend\\agents\\__init__.py",
+      "relative_path": "c:\\Kick this Uss\\OMNI\\backend\\agents\\__init__.py",
+      "language": "python",
+      "lines_of_code": 29,
+      "classes": [],
+      "functions": [],
+      "imports": {
+        "internal": [
+          "backend.agents.loader",
+          "backend.agents.orchestrator",
+          "backend.agents.base_agents",
+          "backend.agents.context_agent",
+          "backend.agents.rag_agent"
+        ],
+        "external": []
+      },
+      "exports": [],
+      "constants": [],
+      "purpose": "Agent Plugin System",
+      "key_responsibilities": [
+        "Agent logic and behavior implementation"
+      ],
+      "module_docstring": "Agent Plugin System\n\nDynamic loading and management of agent plugins.",
+      "has_type_hints": false,
+      "has_docstrings": true,
+      "is_test_file": false,
+      "security_flags": [],
+      "compliance_flags": [],
+      "last_analyzed": "2026-01-10T14:18:49.110174"
+    },
+    "c:\\Kick this Uss\\OMNI\\backend\\autogen\\runtime.py": {
+      "file_path": "c:\\Kick this Uss\\OMNI\\backend\\autogen\\runtime.py",
+      "relative_path": "c:\\Kick this Uss\\OMNI\\backend\\autogen\\runtime.py",
+      "language": "python",
+      "lines_of_code": 459,
+      "classes": [
+        {
+          "name": "AutoGenConfig",
+          "methods": [],
+          "docstring": "Configuration for AutoGen runtime.",
+          "base_classes": [],
+          "is_dataclass": true,
+          "is_abstract": false
+        },
+        {
+          "name": "GroupChatResult",
+          "methods": [
+            "to_dict"
+          ],
+          "docstring": "Result of a group chat session.",
+          "base_classes": [],
+          "is_dataclass": true,
+          "is_abstract": false
+        },
+        {
+          "name": "OmniAgentWrapper",
+          "methods": [
+            "__init__",
+            "name",
+            "description",
+            "create_autogen_agent",
+            "process_message"
+          ],
+          "docstring": "Wraps an OMNI agent as an AutoGen-compatible agent.\n\nThis wrapper allows existing OMNI agents to participate\nin AutoGen group chats without modification.",
+          "base_classes": [],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "AutoGenRuntime",
+          "methods": [
+            "__init__",
+            "is_available",
+            "wrap_agent",
+            "_get_user_proxy",
+            "run_group_chat",
+            "run_two_agent_chat"
+          ],
+          "docstring": "AutoGen Multi-Agent Runtime.\n\nThis runtime:\n- Is completely optional (disabled by default)\n- Wraps existing OMNI agents for AutoGen compatibility\n- Enables multi-agent group conversations\n\nExample:\n  ",
+          "base_classes": [],
+          "is_dataclass": false,
+          "is_abstract": false
+        }
+      ],
+      "functions": [],
+      "imports": {
+        "internal": [
+          "backend.core.interfaces.agent"
+        ],
+        "external": [
+          "logging",
+          "autogen",
+          "dataclasses",
+          "typing",
+          "datetime",
+          "asyncio"
+        ]
+      },
+      "exports": [],
+      "constants": [
+        "AUTOGEN_AVAILABLE",
+        "AUTOGEN_AVAILABLE"
+      ],
+      "purpose": "AutoGen Multi-Agent Runtime",
+      "key_responsibilities": [],
+      "module_docstring": "AutoGen Multi-Agent Runtime\n\nProvides optional AutoGen integration for multi-agent conversations.\nAutoGen is OPTIONAL - the system works without it.\n\nThis runtime:\n- Wraps existing agents as AutoGen agents\n- Enables group chat conversations\n- Is completely disabled by default\n\nSafety guarantees:\n- I",
+      "has_type_hints": true,
+      "has_docstrings": true,
+      "is_test_file": false,
+      "security_flags": [],
+      "compliance_flags": [],
+      "last_analyzed": "2026-01-10T14:18:49.119173"
+    },
+    "c:\\Kick this Uss\\OMNI\\backend\\autogen\\__init__.py": {
+      "file_path": "c:\\Kick this Uss\\OMNI\\backend\\autogen\\__init__.py",
+      "relative_path": "c:\\Kick this Uss\\OMNI\\backend\\autogen\\__init__.py",
+      "language": "python",
+      "lines_of_code": 22,
+      "classes": [],
+      "functions": [],
+      "imports": {
+        "internal": [
+          "backend.autogen.runtime"
+        ],
+        "external": []
+      },
+      "exports": [],
+      "constants": [],
+      "purpose": "AutoGen Multi-Agent Runtime Module",
+      "key_responsibilities": [],
+      "module_docstring": "AutoGen Multi-Agent Runtime Module\n\nProvides optional AutoGen integration for multi-agent conversations.\nThis module is completely optional - system works without AutoGen.\n\nKey features:\n- Agents can run standalone OR in group chats\n- AutoGen is behind an adapter (existing agents unchanged)\n- Disabl",
+      "has_type_hints": false,
+      "has_docstrings": true,
+      "is_test_file": false,
+      "security_flags": [],
+      "compliance_flags": [],
+      "last_analyzed": "2026-01-10T14:18:49.122173"
+    },
+    "c:\\Kick this Uss\\OMNI\\backend\\config\\default.yaml": {
+      "file_path": "c:\\Kick this Uss\\OMNI\\backend\\config\\default.yaml",
+      "relative_path": "c:\\Kick this Uss\\OMNI\\backend\\config\\default.yaml",
+      "language": "yaml",
+      "lines_of_code": 136,
+      "classes": [],
+      "functions": [],
+      "imports": {
+        "internal": [],
+        "external": []
+      },
+      "exports": [],
+      "constants": [],
+      "purpose": "General module",
+      "key_responsibilities": [],
+      "module_docstring": "",
+      "has_type_hints": false,
+      "has_docstrings": false,
+      "is_test_file": false,
+      "security_flags": [],
+      "compliance_flags": [
+        "logging_sensitive"
+      ],
+      "last_analyzed": "2026-01-10T14:18:49.126174"
+    },
+    "c:\\Kick this Uss\\OMNI\\backend\\config\\loader.py": {
+      "file_path": "c:\\Kick this Uss\\OMNI\\backend\\config\\loader.py",
+      "relative_path": "c:\\Kick this Uss\\OMNI\\backend\\config\\loader.py",
+      "language": "python",
+      "lines_of_code": 245,
+      "classes": [
+        {
+          "name": "ConfigLoader",
+          "methods": [
+            "__init__",
+            "load_yaml",
+            "load_multiple",
+            "_resolve_path",
+            "_substitute_env_vars",
+            "_process_includes",
+            "_deep_merge",
+            "save_yaml",
+            "validate_config"
+          ],
+          "docstring": "Loads configuration from YAML files with environment variable support.\n\nFeatures:\n- Environment variable substitution: ${VAR_NAME}\n- Default values: ${VAR_NAME:default}\n- Includes: !include other_file",
+          "base_classes": [],
+          "is_dataclass": false,
+          "is_abstract": false
+        }
+      ],
+      "functions": [],
+      "imports": {
+        "internal": [],
+        "external": [
+          "re",
+          "typing",
+          "os",
+          "yaml",
+          "pathlib"
+        ]
+      },
+      "exports": [],
+      "constants": [
+        "ENV_PATTERN"
+      ],
+      "purpose": "Configuration Loader",
+      "key_responsibilities": [],
+      "module_docstring": "Configuration Loader\n\nHandles YAML loading with environment variable substitution.",
+      "has_type_hints": true,
+      "has_docstrings": true,
+      "is_test_file": false,
+      "security_flags": [],
+      "compliance_flags": [],
+      "last_analyzed": "2026-01-10T14:18:49.132268"
+    },
+    "c:\\Kick this Uss\\OMNI\\backend\\config\\settings.py": {
+      "file_path": "c:\\Kick this Uss\\OMNI\\backend\\config\\settings.py",
+      "relative_path": "c:\\Kick this Uss\\OMNI\\backend\\config\\settings.py",
+      "language": "python",
+      "lines_of_code": 267,
+      "classes": [
+        {
+          "name": "ServerSettings",
+          "methods": [],
+          "docstring": "WebSocket server settings.",
+          "base_classes": [
+            "BaseModel"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "OpenAISettings",
+          "methods": [],
+          "docstring": "OpenAI provider settings.",
+          "base_classes": [
+            "BaseModel"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "AnthropicSettings",
+          "methods": [],
+          "docstring": "Anthropic provider settings.",
+          "base_classes": [
+            "BaseModel"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "LocalLLMSettings",
+          "methods": [],
+          "docstring": "Local LLM provider settings.",
+          "base_classes": [
+            "BaseModel"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "LLMSettings",
+          "methods": [],
+          "docstring": "LLM configuration.",
+          "base_classes": [
+            "BaseModel"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "QdrantSettings",
+          "methods": [],
+          "docstring": "Qdrant settings.",
+          "base_classes": [
+            "BaseModel"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "ChromaSettings",
+          "methods": [],
+          "docstring": "ChromaDB settings.",
+          "base_classes": [
+            "BaseModel"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "FAISSSettings",
+          "methods": [],
+          "docstring": "FAISS settings.",
+          "base_classes": [
+            "BaseModel"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "VectorDBSettings",
+          "methods": [],
+          "docstring": "Vector database configuration.",
+          "base_classes": [
+            "BaseModel"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "RAGSettings",
+          "methods": [],
+          "docstring": "RAG configuration.",
+          "base_classes": [
+            "BaseModel"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "AgentSettings",
+          "methods": [],
+          "docstring": "Agent configuration.",
+          "base_classes": [
+            "BaseModel"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "WorkflowSettings",
+          "methods": [],
+          "docstring": "Workflow configuration.",
+          "base_classes": [
+            "BaseModel"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "LoggingSettings",
+          "methods": [],
+          "docstring": "Logging configuration.",
+          "base_classes": [
+            "BaseModel"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "SecuritySettings",
+          "methods": [],
+          "docstring": "Security configuration.",
+          "base_classes": [
+            "BaseModel"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "FeatureFlags",
+          "methods": [],
+          "docstring": "Feature flags.",
+          "base_classes": [
+            "BaseModel"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "Settings",
+          "methods": [
+            "from_yaml",
+            "get_llm_config",
+            "get_vectordb_config"
+          ],
+          "docstring": "Main settings class.\n\nLoads configuration from:\n1. Default values\n2. YAML config file\n3. Environment variables (OMNI_ prefix)\n\nExample:\n    ```python\n    settings = get_settings()\n    print(settings.l",
+          "base_classes": [
+            "BaseSettings"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        }
+      ],
+      "functions": [],
+      "imports": {
+        "internal": [
+          "backend.config.loader"
+        ],
+        "external": [
+          "typing",
+          "functools",
+          "os",
+          "pathlib",
+          "pydantic",
+          "pydantic_settings"
+        ]
+      },
+      "exports": [],
+      "constants": [],
+      "purpose": "Settings Model",
+      "key_responsibilities": [],
+      "module_docstring": "Settings Model\n\nPydantic-based settings with YAML and environment variable support.",
+      "has_type_hints": true,
+      "has_docstrings": true,
+      "is_test_file": false,
+      "security_flags": [],
+      "compliance_flags": [
+        "logging_sensitive"
+      ],
+      "last_analyzed": "2026-01-10T14:18:49.139272"
+    },
+    "c:\\Kick this Uss\\OMNI\\backend\\config\\__init__.py": {
+      "file_path": "c:\\Kick this Uss\\OMNI\\backend\\config\\__init__.py",
+      "relative_path": "c:\\Kick this Uss\\OMNI\\backend\\config\\__init__.py",
+      "language": "python",
+      "lines_of_code": 14,
+      "classes": [],
+      "functions": [],
+      "imports": {
+        "internal": [
+          "backend.config.settings",
+          "backend.config.loader"
+        ],
+        "external": []
+      },
+      "exports": [],
+      "constants": [],
+      "purpose": "Configuration Management",
+      "key_responsibilities": [],
+      "module_docstring": "Configuration Management\n\nYAML-based configuration with environment variable overrides.",
+      "has_type_hints": false,
+      "has_docstrings": true,
+      "is_test_file": false,
+      "security_flags": [],
+      "compliance_flags": [],
+      "last_analyzed": "2026-01-10T14:18:49.142272"
+    },
+    "c:\\Kick this Uss\\OMNI\\backend\\core\\connection_pool.py": {
+      "file_path": "c:\\Kick this Uss\\OMNI\\backend\\core\\connection_pool.py",
+      "relative_path": "c:\\Kick this Uss\\OMNI\\backend\\core\\connection_pool.py",
+      "language": "python",
+      "lines_of_code": 534,
+      "classes": [
+        {
+          "name": "ConnectionState",
+          "methods": [],
+          "docstring": "State of a pooled connection.",
+          "base_classes": [
+            "str",
+            "Enum"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "PoolConfig",
+          "methods": [],
+          "docstring": "Configuration for connection pool.",
+          "base_classes": [],
+          "is_dataclass": true,
+          "is_abstract": false
+        },
+        {
+          "name": "PoolStats",
+          "methods": [
+            "to_dict"
+          ],
+          "docstring": "Statistics for a connection pool.",
+          "base_classes": [],
+          "is_dataclass": true,
+          "is_abstract": false
+        },
+        {
+          "name": "PooledConnection",
+          "methods": [
+            "mark_in_use",
+            "mark_idle",
+            "is_expired",
+            "age_seconds"
+          ],
+          "docstring": "Wrapper for a pooled connection.",
+          "base_classes": [
+            "<ast.Subscript object at 0x000001EA221A5270>"
+          ],
+          "is_dataclass": true,
+          "is_abstract": false
+        },
+        {
+          "name": "ConnectionFactory",
+          "methods": [
+            "create",
+            "close",
+            "is_healthy",
+            "on_acquire",
+            "on_release"
+          ],
+          "docstring": "Abstract factory for creating connections.",
+          "base_classes": [
+            "ABC",
+            "<ast.Subscript object at 0x000001EA22157BB0>"
+          ],
+          "is_dataclass": false,
+          "is_abstract": true
+        },
+        {
+          "name": "PoolError",
+          "methods": [],
+          "docstring": "Base exception for pool errors.",
+          "base_classes": [
+            "Exception"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "PoolExhaustedError",
+          "methods": [
+            "__init__"
+          ],
+          "docstring": "Raised when pool is exhausted and timeout reached.",
+          "base_classes": [
+            "PoolError"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "PoolClosedError",
+          "methods": [],
+          "docstring": "Raised when trying to use a closed pool.",
+          "base_classes": [
+            "PoolError"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "ConnectionPool",
+          "methods": [
+            "__init__",
+            "config",
+            "stats",
+            "start",
+            "close",
+            "acquire",
+            "_acquire",
+            "_release",
+            "_create_connection_locked",
+            "_cleanup_loop",
+            "_cleanup_expired",
+            "_health_check_loop",
+            "_health_check",
+            "__aenter__",
+            "__aexit__"
+          ],
+          "docstring": "Async connection pool with health checks and metrics.\n\nExample:\n    ```python\n    class VectorDBFactory(ConnectionFactory[ChromaClient]):\n        async def create(self) -> ChromaClient:\n            re",
+          "base_classes": [
+            "<ast.Subscript object at 0x000001EA2216A140>"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "SimpleConnectionFactory",
+          "methods": [
+            "__init__",
+            "create",
+            "close",
+            "is_healthy"
+          ],
+          "docstring": "Simple connection factory using callables.\n\nExample:\n    factory = SimpleConnectionFactory(\n        create_fn=lambda: MyDB.connect(),\n        close_fn=lambda c: c.close(),\n        health_fn=lambda c: ",
+          "base_classes": [
+            "<ast.Subscript object at 0x000001EA1E5C7E20>"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        }
+      ],
+      "functions": [],
+      "imports": {
+        "internal": [],
+        "external": [
+          "logging",
+          "abc",
+          "dataclasses",
+          "contextlib",
+          "enum",
+          "typing",
+          "datetime",
+          "time",
+          "asyncio"
+        ]
+      },
+      "exports": [],
+      "constants": [
+        "T",
+        "IDLE",
+        "IN_USE",
+        "CLOSING",
+        "CLOSED"
+      ],
+      "purpose": "Connection Pool",
+      "key_responsibilities": [],
+      "module_docstring": "Connection Pool\n\nGeneric async connection pooling with health checks and metrics.\nDesigned for database and vector store connections.",
+      "has_type_hints": true,
+      "has_docstrings": true,
+      "is_test_file": false,
+      "security_flags": [],
+      "compliance_flags": [],
+      "last_analyzed": "2026-01-10T14:18:49.153277"
+    },
+    "c:\\Kick this Uss\\OMNI\\backend\\core\\dependencies.py": {
+      "file_path": "c:\\Kick this Uss\\OMNI\\backend\\core\\dependencies.py",
+      "relative_path": "c:\\Kick this Uss\\OMNI\\backend\\core\\dependencies.py",
+      "language": "python",
+      "lines_of_code": 382,
+      "classes": [
+        {
+          "name": "DependencyError",
+          "methods": [],
+          "docstring": "Base exception for dependency-related errors.",
+          "base_classes": [
+            "Exception"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "MissingDependencyError",
+          "methods": [
+            "__init__"
+          ],
+          "docstring": "Raised when a required dependency is missing.",
+          "base_classes": [
+            "DependencyError"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "CircularDependencyError",
+          "methods": [
+            "__init__"
+          ],
+          "docstring": "Raised when circular dependencies are detected.",
+          "base_classes": [
+            "DependencyError"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "DependencyValidationError",
+          "methods": [
+            "__init__"
+          ],
+          "docstring": "Raised when dependency validation fails.",
+          "base_classes": [
+            "DependencyError"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "DependencyStatus",
+          "methods": [],
+          "docstring": "Status of a dependency.",
+          "base_classes": [
+            "str",
+            "Enum"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "DependencyInfo",
+          "methods": [],
+          "docstring": "Information about a single dependency.",
+          "base_classes": [],
+          "is_dataclass": true,
+          "is_abstract": false
+        },
+        {
+          "name": "DependencyGraph",
+          "methods": [
+            "add_agent",
+            "add_agent_metadata",
+            "get_dependencies",
+            "get_dependents",
+            "get_provides",
+            "validate",
+            "validate_strict",
+            "find_missing_dependencies",
+            "detect_cycles",
+            "topological_sort",
+            "get_initialization_order",
+            "to_mermaid",
+            "to_dot",
+            "get_all_transitive_dependencies",
+            "get_dependency_info"
+          ],
+          "docstring": "Represents the dependency graph between agents.\n\nProvides methods for:\n- Validating all dependencies are satisfied\n- Detecting circular dependencies\n- Computing initialization order (topological sort)",
+          "base_classes": [],
+          "is_dataclass": true,
+          "is_abstract": false
+        }
+      ],
+      "functions": [],
+      "imports": {
+        "internal": [],
+        "external": [
+          "dataclasses",
+          "typing",
+          "interfaces",
+          "enum"
+        ]
+      },
+      "exports": [],
+      "constants": [
+        "SATISFIED",
+        "MISSING",
+        "UNAVAILABLE"
+      ],
+      "purpose": "Agent Dependency Management",
+      "key_responsibilities": [],
+      "module_docstring": "Agent Dependency Management\n\nValidates and manages dependencies between agents.\nProvides dependency graph visualization and topological sorting.",
+      "has_type_hints": true,
+      "has_docstrings": true,
+      "is_test_file": false,
+      "security_flags": [],
+      "compliance_flags": [],
+      "last_analyzed": "2026-01-10T14:18:49.162785"
+    },
+    "c:\\Kick this Uss\\OMNI\\backend\\core\\exceptions.py": {
+      "file_path": "c:\\Kick this Uss\\OMNI\\backend\\core\\exceptions.py",
+      "relative_path": "c:\\Kick this Uss\\OMNI\\backend\\core\\exceptions.py",
+      "language": "python",
+      "lines_of_code": 652,
+      "classes": [
+        {
+          "name": "ErrorContext",
+          "methods": [
+            "to_dict"
+          ],
+          "docstring": "Additional context for debugging errors.\n\nAttributes:\n    agent_id: ID of the agent that raised the error\n    operation: What operation was being performed\n    correlation_id: Request correlation ID f",
+          "base_classes": [],
+          "is_dataclass": true,
+          "is_abstract": false
+        },
+        {
+          "name": "OMNIError",
+          "methods": [
+            "__init__",
+            "__str__",
+            "to_dict"
+          ],
+          "docstring": "Base exception for all OMNI errors.\n\nAll custom exceptions inherit from this class, allowing:\n- Catching all OMNI errors with `except OMNIError`\n- Adding context for debugging\n- Determining if error i",
+          "base_classes": [
+            "Exception"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "AgentError",
+          "methods": [],
+          "docstring": "Base class for agent-related errors.",
+          "base_classes": [
+            "OMNIError"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "AgentTimeoutError",
+          "methods": [
+            "__init__"
+          ],
+          "docstring": "Raised when an agent operation times out.\n\nThis is a RECOVERABLE error - the operation can be retried.\n\nExample:\n    try:\n        async with asyncio.timeout(30):\n            result = await agent.proce",
+          "base_classes": [
+            "AgentError"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "AgentValidationError",
+          "methods": [
+            "__init__"
+          ],
+          "docstring": "Raised when input validation fails.\n\nThis is NOT recoverable without fixing the input.\n\nExample:\n    if not message.content:\n        raise AgentValidationError(\n            \"Message content cannot be ",
+          "base_classes": [
+            "AgentError"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "AgentConfigurationError",
+          "methods": [
+            "__init__"
+          ],
+          "docstring": "Raised when agent configuration is invalid.\n\nThis is NOT recoverable without fixing configuration.\n\nExample:\n    if not config.api_key:\n        raise AgentConfigurationError(\n            \"API key is r",
+          "base_classes": [
+            "AgentError"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "AgentNotFoundError",
+          "methods": [
+            "__init__"
+          ],
+          "docstring": "Raised when a requested agent is not registered.\n\nExample:\n    agent = registry.get(\"unknown_agent\")\n    if not agent:\n        raise AgentNotFoundError(\"unknown_agent\")",
+          "base_classes": [
+            "AgentError"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "AgentFatalError",
+          "methods": [
+            "__init__"
+          ],
+          "docstring": "Raised when an unrecoverable error occurs.\n\nThis indicates the agent should be stopped/restarted.\n\nExample:\n    try:\n        # Critical operation\n    except SomeUnrecoverableError as e:\n        raise ",
+          "base_classes": [
+            "AgentError"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "AgentDependencyError",
+          "methods": [
+            "__init__"
+          ],
+          "docstring": "Raised when a required agent dependency is missing.\n\nExample:\n    if not self._context_agent:\n        raise AgentDependencyError(\n            agent_id=\"security_agent\",\n            dependency=\"context",
+          "base_classes": [
+            "AgentError"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "LLMError",
+          "methods": [],
+          "docstring": "Base class for LLM provider errors.",
+          "base_classes": [
+            "OMNIError"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "LLMTimeoutError",
+          "methods": [
+            "__init__"
+          ],
+          "docstring": "Raised when LLM call times out.\n\nThis is RECOVERABLE - can retry with backoff.",
+          "base_classes": [
+            "LLMError"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "LLMRateLimitError",
+          "methods": [
+            "__init__"
+          ],
+          "docstring": "Raised when LLM rate limit is hit.\n\nThis is RECOVERABLE - retry after delay.\n\nAttributes:\n    retry_after_seconds: Suggested wait time before retry",
+          "base_classes": [
+            "LLMError"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "LLMAuthenticationError",
+          "methods": [
+            "__init__"
+          ],
+          "docstring": "Raised when LLM authentication fails.\n\nThis is NOT recoverable without fixing credentials.",
+          "base_classes": [
+            "LLMError"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "LLMResponseError",
+          "methods": [
+            "__init__"
+          ],
+          "docstring": "Raised when LLM returns invalid response.\n\nThis is RECOVERABLE - can retry.",
+          "base_classes": [
+            "LLMError"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "VectorDBError",
+          "methods": [],
+          "docstring": "Base class for vector database errors.",
+          "base_classes": [
+            "OMNIError"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "VectorDBConnectionError",
+          "methods": [
+            "__init__"
+          ],
+          "docstring": "Raised when VectorDB connection fails.\n\nThis is RECOVERABLE - can retry connection.",
+          "base_classes": [
+            "VectorDBError"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "VectorDBQueryError",
+          "methods": [
+            "__init__"
+          ],
+          "docstring": "Raised when VectorDB query fails.\n\nThis is RECOVERABLE - can retry query.",
+          "base_classes": [
+            "VectorDBError"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "VectorDBIndexError",
+          "methods": [
+            "__init__"
+          ],
+          "docstring": "Raised when VectorDB indexing fails.\n\nThis is RECOVERABLE - can retry indexing.",
+          "base_classes": [
+            "VectorDBError"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "RAGError",
+          "methods": [],
+          "docstring": "Base class for RAG service errors.",
+          "base_classes": [
+            "OMNIError"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "RAGIndexError",
+          "methods": [
+            "__init__"
+          ],
+          "docstring": "Raised when RAG indexing fails.",
+          "base_classes": [
+            "RAGError"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "RAGQueryError",
+          "methods": [
+            "__init__"
+          ],
+          "docstring": "Raised when RAG query fails.",
+          "base_classes": [
+            "RAGError"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "WorkflowError",
+          "methods": [],
+          "docstring": "Base class for workflow errors.",
+          "base_classes": [
+            "OMNIError"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "WorkflowTimeoutError",
+          "methods": [
+            "__init__"
+          ],
+          "docstring": "Raised when workflow times out.\n\nThis is RECOVERABLE - partial results may be available.",
+          "base_classes": [
+            "WorkflowError"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "WorkflowValidationError",
+          "methods": [
+            "__init__"
+          ],
+          "docstring": "Raised when workflow validation fails.",
+          "base_classes": [
+            "WorkflowError"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "WorkflowStageError",
+          "methods": [
+            "__init__"
+          ],
+          "docstring": "Raised when a workflow stage fails.",
+          "base_classes": [
+            "WorkflowError"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        }
+      ],
+      "functions": [],
+      "imports": {
+        "internal": [],
+        "external": [
+          "datetime",
+          "dataclasses",
+          "typing"
+        ]
+      },
+      "exports": [],
+      "constants": [],
+      "purpose": "OMNI Exception Hierarchy",
+      "key_responsibilities": [],
+      "module_docstring": "OMNI Exception Hierarchy\n\nProvides typed exceptions for better error handling and debugging.\nAll OMNI-specific exceptions inherit from OMNIError.\n\nException Hierarchy:\n    OMNIError (base)\n    ├── AgentError (agent-related errors)\n    │   ├── AgentTimeoutError (operation timed out)\n    │   ├── Agent",
+      "has_type_hints": true,
+      "has_docstrings": true,
+      "is_test_file": false,
+      "security_flags": [],
+      "compliance_flags": [],
+      "last_analyzed": "2026-01-10T14:18:49.173785"
+    },
+    "c:\\Kick this Uss\\OMNI\\backend\\core\\retry.py": {
+      "file_path": "c:\\Kick this Uss\\OMNI\\backend\\core\\retry.py",
+      "relative_path": "c:\\Kick this Uss\\OMNI\\backend\\core\\retry.py",
+      "language": "python",
+      "lines_of_code": 313,
+      "classes": [
+        {
+          "name": "RetryConfig",
+          "methods": [
+            "__init__",
+            "calculate_delay"
+          ],
+          "docstring": "Configuration for retry behavior.",
+          "base_classes": [],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "RetryContext",
+          "methods": [
+            "__init__",
+            "__aenter__",
+            "__aexit__",
+            "should_continue",
+            "handle_error",
+            "retries_remaining"
+          ],
+          "docstring": "Context manager for retry operations with state tracking.\n\nUseful when you need to track retry state across operations.\n\nExample:\n    ```python\n    async with RetryContext(config=RETRY_STANDARD) as ct",
+          "base_classes": [],
+          "is_dataclass": false,
+          "is_abstract": false
+        }
+      ],
+      "functions": [],
+      "imports": {
+        "internal": [
+          "backend.core.exceptions"
+        ],
+        "external": [
+          "random",
+          "logging",
+          "typing",
+          "functools",
+          "asyncio"
+        ]
+      },
+      "exports": [],
+      "constants": [
+        "T",
+        "RETRY_FAST",
+        "RETRY_STANDARD",
+        "RETRY_PATIENT"
+      ],
+      "purpose": "Retry Logic with Exponential Backoff",
+      "key_responsibilities": [],
+      "module_docstring": "Retry Logic with Exponential Backoff\n\nProvides retry utilities for handling transient failures.",
+      "has_type_hints": true,
+      "has_docstrings": true,
+      "is_test_file": false,
+      "security_flags": [],
+      "compliance_flags": [],
+      "last_analyzed": "2026-01-10T14:18:49.180785"
+    },
+    "c:\\Kick this Uss\\OMNI\\backend\\core\\state.py": {
+      "file_path": "c:\\Kick this Uss\\OMNI\\backend\\core\\state.py",
+      "relative_path": "c:\\Kick this Uss\\OMNI\\backend\\core\\state.py",
+      "language": "python",
+      "lines_of_code": 334,
+      "classes": [
+        {
+          "name": "StateVersion",
+          "methods": [
+            "increment"
+          ],
+          "docstring": "Tracks version information for state changes.",
+          "base_classes": [],
+          "is_dataclass": true,
+          "is_abstract": false
+        },
+        {
+          "name": "ThreadSafeState",
+          "methods": [
+            "__init__",
+            "version",
+            "read",
+            "write",
+            "get",
+            "set",
+            "update",
+            "update_if_version",
+            "on_change",
+            "_notify_change"
+          ],
+          "docstring": "Thread-safe wrapper for mutable state in async contexts.\n\nProvides:\n- Automatic locking for all operations\n- Version tracking for optimistic concurrency\n- Change notifications via callbacks\n\nExample:\n",
+          "base_classes": [
+            "<ast.Subscript object at 0x000001EA22161AE0>"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "ReadContext",
+          "methods": [
+            "__init__",
+            "__aenter__",
+            "__aexit__"
+          ],
+          "docstring": "Context manager for reading state.",
+          "base_classes": [
+            "<ast.Subscript object at 0x000001EA221A7D60>"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "WriteContext",
+          "methods": [
+            "__init__",
+            "__aenter__",
+            "__aexit__"
+          ],
+          "docstring": "Context manager for writing state.",
+          "base_classes": [
+            "<ast.Subscript object at 0x000001EA221A7490>"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "SharedContext",
+          "methods": [
+            "to_dict"
+          ],
+          "docstring": "Typed shared context for agent communication.\n\nReplaces the untyped `shared_state: dict` in AgentContext with\nexplicit, typed fields that are thread-safe.\n\nThis enables:\n- Type checking and autocomple",
+          "base_classes": [],
+          "is_dataclass": true,
+          "is_abstract": false
+        },
+        {
+          "name": "ThreadSafeSharedContext",
+          "methods": [
+            "__init__",
+            "version",
+            "get_project_structure",
+            "set_project_structure",
+            "add_security_finding",
+            "get_security_findings",
+            "clear_security_findings",
+            "add_compliance_finding",
+            "get_compliance_findings",
+            "set_relevant_summaries",
+            "get_relevant_summaries",
+            "to_dict"
+          ],
+          "docstring": "Thread-safe wrapper for SharedContext.\n\nProvides field-level locking for efficient concurrent access.",
+          "base_classes": [],
+          "is_dataclass": false,
+          "is_abstract": false
+        }
+      ],
+      "functions": [],
+      "imports": {
+        "internal": [],
+        "external": [
+          "logging",
+          "dataclasses",
+          "typing",
+          "datetime",
+          "asyncio"
+        ]
+      },
+      "exports": [],
+      "constants": [
+        "T"
+      ],
+      "purpose": "Thread-Safe State Management",
+      "key_responsibilities": [],
+      "module_docstring": "Thread-Safe State Management\n\nProvides thread-safe wrappers for shared state in async contexts.",
+      "has_type_hints": true,
+      "has_docstrings": true,
+      "is_test_file": false,
+      "security_flags": [],
+      "compliance_flags": [],
+      "last_analyzed": "2026-01-10T14:18:49.189787"
+    },
+    "c:\\Kick this Uss\\OMNI\\backend\\core\\timeout.py": {
+      "file_path": "c:\\Kick this Uss\\OMNI\\backend\\core\\timeout.py",
+      "relative_path": "c:\\Kick this Uss\\OMNI\\backend\\core\\timeout.py",
+      "language": "python",
+      "lines_of_code": 351,
+      "classes": [
+        {
+          "name": "TimeoutConfig",
+          "methods": [
+            "to_dict"
+          ],
+          "docstring": "Configuration for timeout behavior.",
+          "base_classes": [],
+          "is_dataclass": true,
+          "is_abstract": false
+        },
+        {
+          "name": "TimeoutResult",
+          "methods": [],
+          "docstring": "Result from a timed operation.",
+          "base_classes": [],
+          "is_dataclass": true,
+          "is_abstract": false
+        },
+        {
+          "name": "TimeoutTracker",
+          "methods": [
+            "__init__",
+            "elapsed_seconds",
+            "remaining_seconds",
+            "mark_timeout",
+            "mark_complete"
+          ],
+          "docstring": "Tracks elapsed time during timeout context.",
+          "base_classes": [],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "TimeoutBudget",
+          "methods": [
+            "__init__",
+            "elapsed_seconds",
+            "remaining_seconds",
+            "is_expired",
+            "step",
+            "get_summary"
+          ],
+          "docstring": "Manages timeout budget across multiple operations.\n\nUseful for workflows where total time is limited and\neach step consumes part of the budget.\n\nUsage:\n    budget = TimeoutBudget(total_seconds=60.0)\n ",
+          "base_classes": [],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "StepContext",
+          "methods": [
+            "elapsed",
+            "remaining"
+          ],
+          "docstring": "Context for a budget step.",
+          "base_classes": [],
+          "is_dataclass": true,
+          "is_abstract": false
+        }
+      ],
+      "functions": [],
+      "imports": {
+        "internal": [
+          "backend.core.exceptions"
+        ],
+        "external": [
+          "logging",
+          "dataclasses",
+          "contextlib",
+          "typing",
+          "datetime",
+          "functools",
+          "asyncio"
+        ]
+      },
+      "exports": [],
+      "constants": [
+        "T",
+        "DEFAULT_TIMEOUT_CONFIG"
+      ],
+      "purpose": "Timeout Management",
+      "key_responsibilities": [],
+      "module_docstring": "Timeout Management\n\nProvides timeout utilities for async operations.",
+      "has_type_hints": true,
+      "has_docstrings": true,
+      "is_test_file": false,
+      "security_flags": [],
+      "compliance_flags": [],
+      "last_analyzed": "2026-01-10T14:18:49.197787"
+    },
+    "c:\\Kick this Uss\\OMNI\\backend\\core\\__init__.py": {
+      "file_path": "c:\\Kick this Uss\\OMNI\\backend\\core\\__init__.py",
+      "relative_path": "c:\\Kick this Uss\\OMNI\\backend\\core\\__init__.py",
+      "language": "python",
+      "lines_of_code": 204,
+      "classes": [],
+      "functions": [],
+      "imports": {
+        "internal": [
+          "backend.core.interfaces.llm",
+          "backend.core.interfaces.vectordb",
+          "backend.core.interfaces.agent",
+          "backend.core.interfaces.workflow",
+          "backend.core.exceptions",
+          "backend.core.retry",
+          "backend.core.state",
+          "backend.core.timeout",
+          "backend.core.dependencies",
+          "backend.core.connection_pool"
+        ],
+        "external": []
+      },
+      "exports": [],
+      "constants": [],
+      "purpose": "OMNI Backend Core Package",
+      "key_responsibilities": [],
+      "module_docstring": "OMNI Backend Core Package\n\nThis package contains the core interfaces, base classes, and abstractions\nthat define the contract for all adapters and plugins.",
+      "has_type_hints": false,
+      "has_docstrings": true,
+      "is_test_file": false,
+      "security_flags": [],
+      "compliance_flags": [],
+      "last_analyzed": "2026-01-10T14:18:49.202788"
+    },
+    "c:\\Kick this Uss\\OMNI\\backend\\core\\interfaces\\agent.py": {
+      "file_path": "c:\\Kick this Uss\\OMNI\\backend\\core\\interfaces\\agent.py",
+      "relative_path": "c:\\Kick this Uss\\OMNI\\backend\\core\\interfaces\\agent.py",
+      "language": "python",
+      "lines_of_code": 335,
+      "classes": [
+        {
+          "name": "MessageType",
+          "methods": [],
+          "docstring": "Types of messages agents can send/receive.",
+          "base_classes": [
+            "str",
+            "Enum"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "AgentStatus",
+          "methods": [],
+          "docstring": "Agent lifecycle states.",
+          "base_classes": [
+            "str",
+            "Enum"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "AgentMessage",
+          "methods": [
+            "to_dict",
+            "from_dict"
+          ],
+          "docstring": "A message exchanged between agents or with the user.\n\nAttributes:\n    id: Unique message identifier\n    type: Message type\n    content: Message content (text or structured data)\n    sender: Sender age",
+          "base_classes": [],
+          "is_dataclass": true,
+          "is_abstract": false
+        },
+        {
+          "name": "AgentTool",
+          "methods": [
+            "to_openai_format"
+          ],
+          "docstring": "A tool that an agent can use.\n\nAttributes:\n    name: Tool name (used for invocation)\n    description: Human-readable description for the LLM\n    parameters: JSON Schema for tool parameters\n    handler",
+          "base_classes": [],
+          "is_dataclass": true,
+          "is_abstract": false
+        },
+        {
+          "name": "AgentContext",
+          "methods": [
+            "get_config",
+            "set_shared",
+            "get_shared"
+          ],
+          "docstring": "Runtime context provided to agents during execution.\n\nAttributes:\n    session_id: Current session identifier\n    workspace_path: Path to the user's workspace\n    config: Agent-specific configuration\n ",
+          "base_classes": [],
+          "is_dataclass": true,
+          "is_abstract": false
+        },
+        {
+          "name": "AgentCapability",
+          "methods": [],
+          "docstring": "Describes a capability an agent provides.",
+          "base_classes": [],
+          "is_dataclass": true,
+          "is_abstract": false
+        },
+        {
+          "name": "AgentConfig",
+          "methods": [],
+          "docstring": "Configuration for creating/configuring an agent.\n\nAttributes:\n    name: Agent name\n    description: What this agent does\n    system_prompt: System prompt for the LLM\n    model: LLM model to use\n    te",
+          "base_classes": [],
+          "is_dataclass": true,
+          "is_abstract": false
+        },
+        {
+          "name": "AgentMetadata",
+          "methods": [
+            "to_dict"
+          ],
+          "docstring": "Metadata describing an agent.\n\nAttributes:\n    id: Unique agent identifier\n    name: Human-readable name\n    description: What this agent does\n    version: Agent version\n    capabilities: List of capa",
+          "base_classes": [],
+          "is_dataclass": true,
+          "is_abstract": false
+        },
+        {
+          "name": "AgentBase",
+          "methods": [
+            "__init__",
+            "metadata",
+            "status",
+            "status",
+            "tools",
+            "register_tool",
+            "process",
+            "initialize",
+            "shutdown",
+            "get_system_prompt",
+            "handle_tool_call",
+            "__repr__"
+          ],
+          "docstring": "Abstract base class for all agents.\n\nAgents are loaded as plugins and orchestrated by AutoGen.\nEach agent has a specific role and set of capabilities.\n\nExample:\n    ```python\n    class CodeReviewAgent",
+          "base_classes": [
+            "ABC"
+          ],
+          "is_dataclass": false,
+          "is_abstract": true
+        }
+      ],
+      "functions": [],
+      "imports": {
+        "internal": [],
+        "external": [
+          "abc",
+          "dataclasses",
+          "uuid",
+          "enum",
+          "typing",
+          "datetime"
+        ]
+      },
+      "exports": [],
+      "constants": [
+        "TEXT",
+        "TOOL_CALL",
+        "TOOL_RESULT",
+        "SYSTEM",
+        "ERROR",
+        "STATUS",
+        "IDLE",
+        "THINKING",
+        "EXECUTING",
+        "WAITING",
+        "ERROR",
+        "STOPPED"
+      ],
+      "purpose": "Agent Interface",
+      "key_responsibilities": [],
+      "module_docstring": "Agent Interface\n\nDefines the contract for all agents in the system.\nAgents are the core building blocks loaded as plugins via AutoGen.",
+      "has_type_hints": true,
+      "has_docstrings": true,
+      "is_test_file": false,
+      "security_flags": [],
+      "compliance_flags": [
+        "logging_sensitive"
+      ],
+      "last_analyzed": "2026-01-10T14:18:49.211063"
+    },
+    "c:\\Kick this Uss\\OMNI\\backend\\core\\interfaces\\llm.py": {
+      "file_path": "c:\\Kick this Uss\\OMNI\\backend\\core\\interfaces\\llm.py",
+      "relative_path": "c:\\Kick this Uss\\OMNI\\backend\\core\\interfaces\\llm.py",
+      "language": "python",
+      "lines_of_code": 229,
+      "classes": [
+        {
+          "name": "LLMRole",
+          "methods": [],
+          "docstring": "Message roles for chat completions.",
+          "base_classes": [
+            "str",
+            "Enum"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "LLMMessage",
+          "methods": [],
+          "docstring": "A single message in a conversation.",
+          "base_classes": [],
+          "is_dataclass": true,
+          "is_abstract": false
+        },
+        {
+          "name": "LLMConfig",
+          "methods": [],
+          "docstring": "Configuration for LLM requests.",
+          "base_classes": [],
+          "is_dataclass": true,
+          "is_abstract": false
+        },
+        {
+          "name": "LLMUsage",
+          "methods": [],
+          "docstring": "Token usage statistics.",
+          "base_classes": [],
+          "is_dataclass": true,
+          "is_abstract": false
+        },
+        {
+          "name": "LLMToolCall",
+          "methods": [],
+          "docstring": "A tool/function call from the LLM.",
+          "base_classes": [],
+          "is_dataclass": true,
+          "is_abstract": false
+        },
+        {
+          "name": "LLMResponse",
+          "methods": [],
+          "docstring": "Response from an LLM completion request.",
+          "base_classes": [],
+          "is_dataclass": true,
+          "is_abstract": false
+        },
+        {
+          "name": "LLMProvider",
+          "methods": [
+            "provider_name",
+            "is_available",
+            "complete",
+            "stream",
+            "embed",
+            "health_check",
+            "default_model",
+            "default_embedding_model"
+          ],
+          "docstring": "Abstract base class for LLM providers.\n\nAll LLM adapters (OpenAI, Anthropic, local LLMs, etc.) must implement this interface.\nThis ensures consistent behavior across different providers and enables ea",
+          "base_classes": [
+            "ABC"
+          ],
+          "is_dataclass": false,
+          "is_abstract": true
+        },
+        {
+          "name": "LLMProviderError",
+          "methods": [
+            "__init__"
+          ],
+          "docstring": "Base exception for LLM provider errors.",
+          "base_classes": [
+            "Exception"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "LLMRateLimitError",
+          "methods": [],
+          "docstring": "Raised when rate limited by the provider.",
+          "base_classes": [
+            "LLMProviderError"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "LLMAuthenticationError",
+          "methods": [],
+          "docstring": "Raised when authentication fails.",
+          "base_classes": [
+            "LLMProviderError"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "LLMContextLengthError",
+          "methods": [],
+          "docstring": "Raised when the context length is exceeded.",
+          "base_classes": [
+            "LLMProviderError"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        }
+      ],
+      "functions": [],
+      "imports": {
+        "internal": [],
+        "external": [
+          "abc",
+          "dataclasses",
+          "typing",
+          "enum"
+        ]
+      },
+      "exports": [],
+      "constants": [
+        "SYSTEM",
+        "USER",
+        "ASSISTANT",
+        "FUNCTION",
+        "TOOL"
+      ],
+      "purpose": "LLM Provider Interface",
+      "key_responsibilities": [],
+      "module_docstring": "LLM Provider Interface\n\nDefines the contract for all LLM adapters (OpenAI, Anthropic, local LLMs, etc.)\nThis interface ensures any LLM provider can be swapped without changing application code.",
+      "has_type_hints": true,
+      "has_docstrings": true,
+      "is_test_file": false,
+      "security_flags": [
+        "hardcoded_secret"
+      ],
+      "compliance_flags": [
+        "logging_sensitive"
+      ],
+      "last_analyzed": "2026-01-10T14:18:49.217071"
+    },
+    "c:\\Kick this Uss\\OMNI\\backend\\core\\interfaces\\vectordb.py": {
+      "file_path": "c:\\Kick this Uss\\OMNI\\backend\\core\\interfaces\\vectordb.py",
+      "relative_path": "c:\\Kick this Uss\\OMNI\\backend\\core\\interfaces\\vectordb.py",
+      "language": "python",
+      "lines_of_code": 295,
+      "classes": [
+        {
+          "name": "DistanceMetric",
+          "methods": [],
+          "docstring": "Distance metrics for similarity search.",
+          "base_classes": [
+            "str",
+            "Enum"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "Document",
+          "methods": [
+            "__post_init__"
+          ],
+          "docstring": "A document to be stored in the vector database.\n\nAttributes:\n    id: Unique identifier (auto-generated if not provided)\n    content: The text content of the document\n    embedding: Optional pre-comput",
+          "base_classes": [],
+          "is_dataclass": true,
+          "is_abstract": false
+        },
+        {
+          "name": "SearchResult",
+          "methods": [],
+          "docstring": "A single search result from the vector database.\n\nAttributes:\n    document: The matched document\n    score: Similarity score (higher = more similar for cosine)\n    distance: Raw distance value",
+          "base_classes": [],
+          "is_dataclass": true,
+          "is_abstract": false
+        },
+        {
+          "name": "CollectionConfig",
+          "methods": [
+            "__post_init__"
+          ],
+          "docstring": "Configuration for creating a collection.",
+          "base_classes": [],
+          "is_dataclass": true,
+          "is_abstract": false
+        },
+        {
+          "name": "SearchConfig",
+          "methods": [],
+          "docstring": "Configuration for search queries.",
+          "base_classes": [],
+          "is_dataclass": true,
+          "is_abstract": false
+        },
+        {
+          "name": "VectorDBProvider",
+          "methods": [
+            "provider_name",
+            "is_available",
+            "create_collection",
+            "delete_collection",
+            "collection_exists",
+            "list_collections",
+            "upsert",
+            "delete",
+            "search",
+            "get",
+            "health_check",
+            "count"
+          ],
+          "docstring": "Abstract base class for vector database providers.\n\nAll vector DB adapters (Qdrant, Chroma, FAISS, etc.) must implement this interface.\nThis ensures consistent document storage and retrieval across pr",
+          "base_classes": [
+            "ABC"
+          ],
+          "is_dataclass": false,
+          "is_abstract": true
+        },
+        {
+          "name": "VectorDBError",
+          "methods": [
+            "__init__"
+          ],
+          "docstring": "Base exception for vector database errors.",
+          "base_classes": [
+            "Exception"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "CollectionNotFoundError",
+          "methods": [],
+          "docstring": "Raised when a collection does not exist.",
+          "base_classes": [
+            "VectorDBError"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "CollectionExistsError",
+          "methods": [],
+          "docstring": "Raised when trying to create a collection that already exists.",
+          "base_classes": [
+            "VectorDBError"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        }
+      ],
+      "functions": [],
+      "imports": {
+        "internal": [],
+        "external": [
+          "abc",
+          "dataclasses",
+          "uuid",
+          "typing",
+          "enum"
+        ]
+      },
+      "exports": [],
+      "constants": [
+        "COSINE",
+        "EUCLIDEAN",
+        "DOT_PRODUCT"
+      ],
+      "purpose": "Vector Database Provider Interface",
+      "key_responsibilities": [],
+      "module_docstring": "Vector Database Provider Interface\n\nDefines the contract for all vector database adapters (Qdrant, Chroma, FAISS, etc.)\nThis interface ensures consistent document storage and retrieval across providers.",
+      "has_type_hints": true,
+      "has_docstrings": true,
+      "is_test_file": false,
+      "security_flags": [],
+      "compliance_flags": [],
+      "last_analyzed": "2026-01-10T14:18:49.225151"
+    },
+    "c:\\Kick this Uss\\OMNI\\backend\\core\\interfaces\\workflow.py": {
+      "file_path": "c:\\Kick this Uss\\OMNI\\backend\\core\\interfaces\\workflow.py",
+      "relative_path": "c:\\Kick this Uss\\OMNI\\backend\\core\\interfaces\\workflow.py",
+      "language": "python",
+      "lines_of_code": 339,
+      "classes": [
+        {
+          "name": "WorkflowStatus",
+          "methods": [],
+          "docstring": "Workflow execution states.",
+          "base_classes": [
+            "str",
+            "Enum"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "StepStatus",
+          "methods": [],
+          "docstring": "Individual step execution states.",
+          "base_classes": [
+            "str",
+            "Enum"
+          ],
+          "is_dataclass": false,
+          "is_abstract": false
+        },
+        {
+          "name": "WorkflowStep",
+          "methods": [],
+          "docstring": "A single step in a workflow.\n\nAttributes:\n    id: Unique step identifier\n    name: Human-readable step name\n    description: What this step does\n    handler: Function to execute for this step\n    depe",
+          "base_classes": [],
+          "is_dataclass": true,
+          "is_abstract": false
+        },
+        {
+          "name": "StepResult",
+          "methods": [],
+          "docstring": "Result of executing a workflow step.",
+          "base_classes": [],
+          "is_dataclass": true,
+          "is_abstract": false
+        },
+        {
+          "name": "WorkflowContext",
+          "methods": [
+            "get_input",
+            "get_state",
+            "set_state",
+            "get_step_output"
+          ],
+          "docstring": "Runtime context for workflow execution.\n\nAttributes:\n    workflow_id: Unique workflow run identifier\n    inputs: Initial workflow inputs\n    state: Mutable state that persists across steps\n    step_re",
+          "base_classes": [],
+          "is_dataclass": true,
+          "is_abstract": false
+        },
+        {
+          "name": "WorkflowMetadata",
+          "methods": [],
+          "docstring": "Metadata describing a workflow.",
+          "base_classes": [],
+          "is_dataclass": true,
+          "is_abstract": false
+        },
+        {
+          "name": "WorkflowResult",
+          "methods": [
+            "is_success"
+          ],
+          "docstring": "Final result of a workflow execution.",
+          "base_classes": [
+            "<ast.Subscript object at 0x000001EA221930D0>"
+          ],
+          "is_dataclass": true,
+          "is_abstract": false
+        },
+        {
+          "name": "WorkflowBase",
+          "methods": [
+            "__init__",
+            "metadata",
+            "status",
+            "steps",
+            "current_step",
+            "define_steps",
+            "execute",
+            "_execute_step",
+            "cancel",
+            "pause",
+            "resume",
+            "__repr__"
+          ],
+          "docstring": "Abstract base class for workflows.\n\nWorkflows define multi-step processes using LangChain/LangGraph.\nThey orchestrate agents and tools to accomplish complex tasks.\n\nExample:\n    ```python\n    class Co",
+          "base_classes": [
+            "ABC"
+          ],
+          "is_dataclass": false,
+          "is_abstract": true
+        }
+      ],
+      "functions": [],
+      "imports": {
+        "internal": [],
+        "external": [
+          "abc",
+          "dataclasses",
+          "uuid",
+          "enum",
+          "typing",
+          "datetime"
+        ]
+      },
+      "exports": [],
+      "constants": [
+        "T",
+        "PENDING",
+        "RUNNING",
+        "PAUSED",
+        "COMPLETED",
+        "FAILED",
+        "CANCELLED",
+        "PENDING",
+        "RUNNING",
+        "COMPLETED",
+        "FAILED",
+        "SKIPPED"
+      ],
+      "purpose": "Workflow Interface",
+      "key_responsibilities": [],
+      "module_docstring": "Workflow Interface\n\nDefines the contract for LangChain/LangGraph workflows.\nWorkflows orchestrate multi-step processes and agent coordination.",
+      "has_type_hints": true,
+      "has_docstrings": true,
+      "is_test_file": false,
+      "security_flags": [],
+      "compliance_flags": [],
+      "last_analyzed": "2026-01-10T14:18:49.236158"
+    },
+    "c:\\Kick this Uss\\OMNI\\backend\\core\\interfaces\\__init__.py": {
+      "file_path": "c:\\Kick this Uss\\OMNI\\backend\\core\\interfaces\\__init__.py",
+      "relative_path": "c:\\Kick this Uss\\OMNI\\backend\\core\\interfaces\\__init__.py",
+      "language": "python",
+      "lines_of_code": 21,
+      "classes": [],
+      "functions": [],
+      "imports": {
+        "internal": [
+          "backend.core.interfaces.llm",
+          "backend.core.interfaces.vectordb",
+          "backend.core.interfaces.agent",
+          "backend.core.interfaces.workflow"
+        ],
+        "external": []
+      },
+      "exports": [],
+      "constants": [],
+      "purpose": "Core interfaces package.",
+      "key_responsibilities": [],
+      "module_docstring": "Core interfaces package.",
+      "has_type_hints": false,
+      "has_docstrings": true,
+      "is_test_file": false,
+      "security_flags": [],
+      "compliance_flags": [],
+      "last_analyzed": "2026-01-10T14:18:49.241159"
+    },
+    "c:\\Kick this Uss\\OMNI\\backend\\integrations\\copilot_integration.py": {
+      "file_path": "c:\\Kick this Uss\\OMNI\\backend\\integrations\\copilot_integration.py",
+      "relative_path": "c:\\Kick this Uss\\OMNI\\backend\\integrations\\copilot_integration.py",
+      "language": "python",
+      "lines_of_code": 1093,
+      "classes": [
+        {
+          "name": "FileSummary",
+          "methods": [
+            "to_markdown"
+          ],
+          "docstring": "Detailed summary of a single file for senior developers.",
+          "base_classes": [],
+          "is_dataclass": true,
+          "is_abstract": false
+        },
+        {
+          "name": "ProjectContext",
+          "methods": [],
+          "docstring": "Complete project context for Copilot.",
+          "base_classes": [],
+          "is_dataclass": true,
+          "is_abstract": false
+        },
+        {
+          "name": "CopilotIntegration",
+          "methods": [
+            "__init__",
+            "_ensure_directories",
+            "_analyze_data_flow",
+            "generate_all",
+            "generate_copilot_instructions",
+            "generate_project_overview",
+            "generate_file_summaries",
+            "generate_component_map",
+            "generate_interfaces_and_apis",
+            "generate_data_model",
+            "generate_domain_patterns",
+            "generate_hotspots",
+            "generate_security_insights",
+            "generate_compliance_insights",
+            "update_file_summary"
+          ],
+          "docstring": "Generates and maintains files for Copilot integration.\n\nCreates a .omni/ folder structure:\n```\n.omni/\n├── context/\n│   ├── project-overview.md    # Project structure, stack, architecture\n│   └── file-",
+          "base_classes": [],
+          "is_dataclass": false,
+          "is_abstract": false
+        }
+      ],
+      "functions": [],
+      "imports": {
+        "internal": [],
+        "external": [
+          "logging",
+          "dataclasses",
+          "typing",
+          "datetime",
+          "os",
+          "pathlib"
+        ]
+      },
+      "exports": [],
+      "constants": [],
+      "purpose": "Copilot Integration",
+      "key_responsibilities": [],
+      "module_docstring": "Copilot Integration\n\nGenerates files that GitHub Copilot can read for context:\n- .github/copilot-instructions.md - Instructions for Copilot\n- .omni/context/project-overview.md - Project structure and summary\n- .omni/context/file-summaries.md - Detailed file-by-file summaries\n- .omni/insights/securit",
+      "has_type_hints": true,
+      "has_docstrings": true,
+      "is_test_file": false,
+      "security_flags": [],
+      "compliance_flags": [
+        "logging_sensitive"
+      ],
+      "last_analyzed": "2026-01-10T14:18:49.263391"
+    },
+    "c:\\Kick this Uss\\OMNI\\backend\\integrations\\file_analyzer.py": {
+      "file_path": "c:\\Kick this Uss\\OMNI\\backend\\integrations\\file_analyzer.py",
+      "relative_path": "c:\\Kick this Uss\\OMNI\\backend\\integrations\\file_analyzer.py",
+      "language": "python",
+      "lines_of_code": 657,
+      "classes": [
+        {
+          "name": "ClassInfo",
+          "methods": [],
+          "docstring": "Information about a class.",
+          "base_classes": [],
+          "is_dataclass": true,
+          "is_abstract": false
+        },
+        {
+          "name": "FunctionInfo",
+          "methods": [],
+          "docstring": "Information about a function.",
+          "base_classes": [],
+          "is_dataclass": true,
+          "is_abstract": false
+        },
+        {
+          "name": "FileAnalysis",
+          "methods": [],
+          "docstring": "Complete analysis of a source file.",
+          "base_classes": [],
+          "is_dataclass": true,
+          "is_abstract": false
+        },
+        {
+          "name": "FileAnalyzer",
+          "methods": [
+            "__init__",
+            "analyze_file",
+            "_detect_language",
+            "_analyze_python",
+            "_analyze_js_ts",
+            "_analyze_java",
+            "_analyze_go",
+            "_analyze_generic",
+            "_check_security",
+            "_check_compliance",
+            "_infer_purpose",
+            "_get_base_name",
+            "_get_decorator_name",
+            "to_file_summary",
+            "_security_flag_to_note"
+          ],
+          "docstring": "Analyzes source files to generate detailed summaries.\n\nExample:\n    ```python\n    analyzer = FileAnalyzer()\n    \n    # Analyze a file\n    analysis = analyzer.analyze_file(\"/path/to/file.py\", content)\n",
+          "base_classes": [],
+          "is_dataclass": false,
+          "is_abstract": false
+        }
+      ],
+      "functions": [],
+      "imports": {
+        "internal": [
+          "backend.integrations.copilot_integration"
+        ],
+        "external": [
+          "logging",
+          "ast",
+          "dataclasses",
+          "re",
+          "typing",
+          "pathlib"
+        ]
+      },
+      "exports": [],
+      "constants": [
+        "SECURITY_PATTERNS",
+        "COMPLIANCE_PATTERNS"
+      ],
+      "purpose": "File Analyzer",
+      "key_responsibilities": [],
+      "module_docstring": "File Analyzer\n\nAnalyzes source code files and generates detailed summaries\nsuitable for senior developers and Copilot context.\n\nSupports: Python, TypeScript, JavaScript, Java, Go, and more.",
+      "has_type_hints": true,
+      "has_docstrings": true,
+      "is_test_file": false,
+      "security_flags": [
+        "sql_injection",
+        "shell_injection",
+        "eval_usage",
+        "pickle_usage"
+      ],
+      "compliance_flags": [
+        "pii_handling",
+        "logging_sensitive",
+        "no_encryption"
+      ],
+      "last_analyzed": "2026-01-10T14:18:49.275829"
+    },
+    "c:\\Kick this Uss\\OMNI\\backend\\integrations\\__init__.py": {
+      "file_path": "c:\\Kick this Uss\\OMNI\\backend\\integrations\\__init__.py",
+      "relative_path": "c:\\Kick this Uss\\OMNI\\backend\\integrations\\__init__.py",
+      "language": "python",
+      "lines_of_code": 27,
+      "classes": [],
+      "functions": [],
+      "imports": {
+        "internal": [
+          "backend.integrations.copilot_integration",
+          "backend.integrations.file_analyzer"
+        ],
+        "external": []
+      },
+      "exports": [],
+      "constants": [],
+      "purpose": "OMNI Integrations Package",
+      "key_responsibilities": [],
+      "module_docstring": "OMNI Integrations Package\n\nContains integrations with external tools and services.",
+      "has_type_hints": false,
+      "has_docstrings": true,
+      "is_test_file": false,
+      "security_flags": [],
+      "compliance_flags": [],
+      "last_analyzed": "2026-01-10T14:18:49.280834"
+    },
+    "c:\\Kick this Uss\\OMNI\\backend\\rag\\service.py": {
+      "file_path": "c:\\Kick this Uss\\OMNI\\backend\\rag\\service.py",
+      "relative_path": "c:\\Kick this Uss\\OMNI\\backend\\rag\\service.py",
+      "language": "python",
+      "lines_of_code": 506,
+      "classes": [
+        {
+          "name": "RAGConfig",
+          "methods": [],
+          "docstring": "RAG configuration.",
+          "base_classes": [],
+          "is_dataclass": true,
+          "is_abstract": false
+        },
+        {
+          "name": "ContextVersion",
+          "methods": [],
+          "docstring": "Tracks version of indexed content.",
+          "base_classes": [],
+          "is_dataclass": true,
+          "is_abstract": false
+        },
+        {
+          "name": "RAGResult",
+          "methods": [],
+          "docstring": "Result from RAG query.",
+          "base_classes": [],
+          "is_dataclass": true,
+          "is_abstract": false
+        },
+        {
+          "name": "RAGService",
+          "methods": [
+            "__init__",
+            "is_available",
+            "initialize",
+            "_init_domain_index",
+            "ingest_file",
+            "_remove_nodes",
+            "ingest_directory",
+            "query",
+            "query_multiple_domains",
+            "get_context_for_prompt",
+            "persist",
+            "shutdown"
+          ],
+          "docstring": "RAG Service using LlamaIndex for orchestration.\n\nThis service is:\n- Completely optional (disabled by default)\n- Safe if LlamaIndex is not installed\n- Uses existing VectorDB adapters via LlamaIndex ada",
+          "base_classes": [],
+          "is_dataclass": false,
+          "is_abstract": false
+        }
+      ],
+      "functions": [],
+      "imports": {
+        "internal": [
+          "backend.utils.gitignore"
+        ],
+        "external": [
+          "logging",
+          "hashlib",
+          "dataclasses",
+          "llama_index",
+          "typing",
+          "datetime",
+          "pathlib"
+        ]
+      },
+      "exports": [],
+      "constants": [
+        "LLAMAINDEX_AVAILABLE",
+        "LLAMAINDEX_AVAILABLE"
+      ],
+      "purpose": "RAG Service using LlamaIndex",
+      "key_responsibilities": [
+        "`RAGService`: Business logic service"
+      ],
+      "module_docstring": "RAG Service using LlamaIndex\n\nProvides retrieval-augmented generation using LlamaIndex as an orchestration layer.\nLlamaIndex is OPTIONAL - the system works without it.\n\nThis service:\n- Uses existing VectorDB adapters (no changes to adapter interface)\n- Supports domain-based indices (code, security, ",
+      "has_type_hints": true,
+      "has_docstrings": true,
+      "is_test_file": false,
+      "security_flags": [],
+      "compliance_flags": [
+        "logging_sensitive"
+      ],
+      "last_analyzed": "2026-01-10T14:18:49.291834"
+    },
+    "c:\\Kick this Uss\\OMNI\\backend\\rag\\__init__.py": {
+      "file_path": "c:\\Kick this Uss\\OMNI\\backend\\rag\\__init__.py",
+      "relative_path": "c:\\Kick this Uss\\OMNI\\backend\\rag\\__init__.py",
+      "language": "python",
+      "lines_of_code": 23,
+      "classes": [],
+      "functions": [],
+      "imports": {
+        "internal": [
+          "backend.rag.service"
+        ],
+        "external": []
+      },
+      "exports": [],
+      "constants": [],
+      "purpose": "RAG (Retrieval-Augmented Generation) Module",
+      "key_responsibilities": [],
+      "module_docstring": "RAG (Retrieval-Augmented Generation) Module\n\nProvides optional RAG functionality using LlamaIndex as an orchestration layer.\nThis module is completely optional and disabled by default.\n\nKey features:\n- Domain-based indices (code, security, compliance)\n- Context versioning on file save\n- Works with e",
+      "has_type_hints": false,
+      "has_docstrings": true,
+      "is_test_file": false,
+      "security_flags": [],
+      "compliance_flags": [],
+      "last_analyzed": "2026-01-10T14:18:49.297834"
+    },
+    "c:\\Kick this Uss\\OMNI\\backend\\rulesets\\gdpr-sample.yaml": {
+      "file_path": "c:\\Kick this Uss\\OMNI\\backend\\rulesets\\gdpr-sample.yaml",
+      "relative_path": "c:\\Kick this Uss\\OMNI\\backend\\rulesets\\gdpr-sample.yaml",
+      "language": "yaml",
+      "lines_of_code": 70,
+      "classes": [],
+      "functions": [],
+      "imports": {
+        "internal": [],
+        "external": []
+      },
+      "exports": [],
+      "constants": [],
+      "purpose": "General module",
+      "key_responsibilities": [],
+      "module_docstring": "",
+      "has_type_hints": false,
+      "has_docstrings": false,
+      "is_test_file": false,
+      "security_flags": [],
+      "compliance_flags": [
+        "pii_handling"
+      ],
+      "last_analyzed": "2026-01-10T14:18:49.302836"
+    }
+  },
+  "api_patterns": [],
+  "component_patterns": [],
+  "conventions": {},
+  "completed_features": [],
+  "pending_features": [],
+  "change_history": [
+    {
+      "version": 1,
+      "timestamp": "2026-01-10T14:18:48.871361",
+      "modifier": "copilot",
+      "description": "Added c:\\Kick this Uss\\OMNI\\test_omni.py"
+    },
+    {
+      "version": 2,
+      "timestamp": "2026-01-10T14:18:48.877361",
+      "modifier": "copilot",
+      "description": "Added c:\\Kick this Uss\\OMNI\\test_omni_simple.py"
+    },
+    {
+      "version": 3,
+      "timestamp": "2026-01-10T14:18:48.889540",
+      "modifier": "copilot",
+      "description": "Added c:\\Kick this Uss\\OMNI\\backend\\observability.py"
+    },
+    {
+      "version": 4,
+      "timestamp": "2026-01-10T14:18:48.891541",
+      "modifier": "copilot",
+      "description": "Added c:\\Kick this Uss\\OMNI\\backend\\__init__.py"
+    },
+    {
+      "version": 5,
+      "timestamp": "2026-01-10T14:18:48.895557",
+      "modifier": "copilot",
+      "description": "Added c:\\Kick this Uss\\OMNI\\backend\\adapters\\llm\\anthropic_adapter.py"
+    },
+    {
+      "version": 6,
+      "timestamp": "2026-01-10T14:18:48.899568",
+      "modifier": "copilot",
+      "description": "Added c:\\Kick this Uss\\OMNI\\backend\\adapters\\llm\\base.py"
+    },
+    {
+      "version": 7,
+      "timestamp": "2026-01-10T14:18:48.902568",
+      "modifier": "copilot",
+      "description": "Added c:\\Kick this Uss\\OMNI\\backend\\adapters\\llm\\factory.py"
+    },
+    {
+      "version": 8,
+      "timestamp": "2026-01-10T14:18:48.907567",
+      "modifier": "copilot",
+      "description": "Added c:\\Kick this Uss\\OMNI\\backend\\adapters\\llm\\local_adapter.py"
+    },
+    {
+      "version": 9,
+      "timestamp": "2026-01-10T14:18:48.912070",
+      "modifier": "copilot",
+      "description": "Added c:\\Kick this Uss\\OMNI\\backend\\adapters\\llm\\openai_adapter.py"
+    },
+    {
+      "version": 10,
+      "timestamp": "2026-01-10T14:18:48.914080",
+      "modifier": "copilot",
+      "description": "Added c:\\Kick this Uss\\OMNI\\backend\\adapters\\llm\\__init__.py"
+    },
+    {
+      "version": 11,
+      "timestamp": "2026-01-10T14:18:48.918081",
+      "modifier": "copilot",
+      "description": "Added c:\\Kick this Uss\\OMNI\\backend\\adapters\\vectordb\\base.py"
+    },
+    {
+      "version": 12,
+      "timestamp": "2026-01-10T14:18:48.924487",
+      "modifier": "copilot",
+      "description": "Added c:\\Kick this Uss\\OMNI\\backend\\adapters\\vectordb\\chroma_adapter.py"
+    },
+    {
+      "version": 13,
+      "timestamp": "2026-01-10T14:18:48.928464",
+      "modifier": "copilot",
+      "description": "Added c:\\Kick this Uss\\OMNI\\backend\\adapters\\vectordb\\factory.py"
+    },
+    {
+      "version": 14,
+      "timestamp": "2026-01-10T14:18:48.937686",
+      "modifier": "copilot",
+      "description": "Added c:\\Kick this Uss\\OMNI\\backend\\adapters\\vectordb\\faiss_adapter.py"
+    },
+    {
+      "version": 15,
+      "timestamp": "2026-01-10T14:18:48.944698",
+      "modifier": "copilot",
+      "description": "Added c:\\Kick this Uss\\OMNI\\backend\\adapters\\vectordb\\qdrant_adapter.py"
+    },
+    {
+      "version": 16,
+      "timestamp": "2026-01-10T14:18:48.946691",
+      "modifier": "copilot",
+      "description": "Added c:\\Kick this Uss\\OMNI\\backend\\adapters\\vectordb\\__init__.py"
+    },
+    {
+      "version": 17,
+      "timestamp": "2026-01-10T14:18:48.952689",
+      "modifier": "copilot",
+      "description": "Added c:\\Kick this Uss\\OMNI\\backend\\agents\\base_agents.py"
+    },
+    {
+      "version": 18,
+      "timestamp": "2026-01-10T14:18:48.965691",
+      "modifier": "copilot",
+      "description": "Added c:\\Kick this Uss\\OMNI\\backend\\agents\\coding_agent.py"
+    },
+    {
+      "version": 19,
+      "timestamp": "2026-01-10T14:18:48.981690",
+      "modifier": "copilot",
+      "description": "Added c:\\Kick this Uss\\OMNI\\backend\\agents\\compliance_agent.py"
+    },
+    {
+      "version": 20,
+      "timestamp": "2026-01-10T14:18:49.024927",
+      "modifier": "copilot",
+      "description": "Added c:\\Kick this Uss\\OMNI\\backend\\agents\\context_agent.py"
+    },
+    {
+      "version": 21,
+      "timestamp": "2026-01-10T14:18:49.032936",
+      "modifier": "copilot",
+      "description": "Added c:\\Kick this Uss\\OMNI\\backend\\agents\\loader.py"
+    },
+    {
+      "version": 22,
+      "timestamp": "2026-01-10T14:18:49.045983",
+      "modifier": "copilot",
+      "description": "Added c:\\Kick this Uss\\OMNI\\backend\\agents\\orchestrator.py"
+    },
+    {
+      "version": 23,
+      "timestamp": "2026-01-10T14:18:49.064971",
+      "modifier": "copilot",
+      "description": "Added c:\\Kick this Uss\\OMNI\\backend\\agents\\rag_agent.py"
+    },
+    {
+      "version": 24,
+      "timestamp": "2026-01-10T14:18:49.078967",
+      "modifier": "copilot",
+      "description": "Added c:\\Kick this Uss\\OMNI\\backend\\agents\\security_agent.py"
+    },
+    {
+      "version": 25,
+      "timestamp": "2026-01-10T14:18:49.106156",
+      "modifier": "copilot",
+      "description": "Added c:\\Kick this Uss\\OMNI\\backend\\agents\\workflow.py"
+    },
+    {
+      "version": 26,
+      "timestamp": "2026-01-10T14:18:49.110174",
+      "modifier": "copilot",
+      "description": "Added c:\\Kick this Uss\\OMNI\\backend\\agents\\__init__.py"
+    },
+    {
+      "version": 27,
+      "timestamp": "2026-01-10T14:18:49.119173",
+      "modifier": "copilot",
+      "description": "Added c:\\Kick this Uss\\OMNI\\backend\\autogen\\runtime.py"
+    },
+    {
+      "version": 28,
+      "timestamp": "2026-01-10T14:18:49.122173",
+      "modifier": "copilot",
+      "description": "Added c:\\Kick this Uss\\OMNI\\backend\\autogen\\__init__.py"
+    },
+    {
+      "version": 29,
+      "timestamp": "2026-01-10T14:18:49.126174",
+      "modifier": "copilot",
+      "description": "Added c:\\Kick this Uss\\OMNI\\backend\\config\\default.yaml"
+    },
+    {
+      "version": 30,
+      "timestamp": "2026-01-10T14:18:49.132268",
+      "modifier": "copilot",
+      "description": "Added c:\\Kick this Uss\\OMNI\\backend\\config\\loader.py"
+    },
+    {
+      "version": 31,
+      "timestamp": "2026-01-10T14:18:49.139272",
+      "modifier": "copilot",
+      "description": "Added c:\\Kick this Uss\\OMNI\\backend\\config\\settings.py"
+    },
+    {
+      "version": 32,
+      "timestamp": "2026-01-10T14:18:49.142272",
+      "modifier": "copilot",
+      "description": "Added c:\\Kick this Uss\\OMNI\\backend\\config\\__init__.py"
+    },
+    {
+      "version": 33,
+      "timestamp": "2026-01-10T14:18:49.153277",
+      "modifier": "copilot",
+      "description": "Added c:\\Kick this Uss\\OMNI\\backend\\core\\connection_pool.py"
+    },
+    {
+      "version": 34,
+      "timestamp": "2026-01-10T14:18:49.162785",
+      "modifier": "copilot",
+      "description": "Added c:\\Kick this Uss\\OMNI\\backend\\core\\dependencies.py"
+    },
+    {
+      "version": 35,
+      "timestamp": "2026-01-10T14:18:49.173785",
+      "modifier": "copilot",
+      "description": "Added c:\\Kick this Uss\\OMNI\\backend\\core\\exceptions.py"
+    },
+    {
+      "version": 36,
+      "timestamp": "2026-01-10T14:18:49.181784",
+      "modifier": "copilot",
+      "description": "Added c:\\Kick this Uss\\OMNI\\backend\\core\\retry.py"
+    },
+    {
+      "version": 37,
+      "timestamp": "2026-01-10T14:18:49.189787",
+      "modifier": "copilot",
+      "description": "Added c:\\Kick this Uss\\OMNI\\backend\\core\\state.py"
+    },
+    {
+      "version": 38,
+      "timestamp": "2026-01-10T14:18:49.197787",
+      "modifier": "copilot",
+      "description": "Added c:\\Kick this Uss\\OMNI\\backend\\core\\timeout.py"
+    },
+    {
+      "version": 39,
+      "timestamp": "2026-01-10T14:18:49.202788",
+      "modifier": "copilot",
+      "description": "Added c:\\Kick this Uss\\OMNI\\backend\\core\\__init__.py"
+    },
+    {
+      "version": 40,
+      "timestamp": "2026-01-10T14:18:49.211063",
+      "modifier": "copilot",
+      "description": "Added c:\\Kick this Uss\\OMNI\\backend\\core\\interfaces\\agent.py"
+    },
+    {
+      "version": 41,
+      "timestamp": "2026-01-10T14:18:49.218071",
+      "modifier": "copilot",
+      "description": "Added c:\\Kick this Uss\\OMNI\\backend\\core\\interfaces\\llm.py"
+    },
+    {
+      "version": 42,
+      "timestamp": "2026-01-10T14:18:49.225151",
+      "modifier": "copilot",
+      "description": "Added c:\\Kick this Uss\\OMNI\\backend\\core\\interfaces\\vectordb.py"
+    },
+    {
+      "version": 43,
+      "timestamp": "2026-01-10T14:18:49.236158",
+      "modifier": "copilot",
+      "description": "Added c:\\Kick this Uss\\OMNI\\backend\\core\\interfaces\\workflow.py"
+    },
+    {
+      "version": 44,
+      "timestamp": "2026-01-10T14:18:49.241159",
+      "modifier": "copilot",
+      "description": "Added c:\\Kick this Uss\\OMNI\\backend\\core\\interfaces\\__init__.py"
+    },
+    {
+      "version": 45,
+      "timestamp": "2026-01-10T14:18:49.263391",
+      "modifier": "copilot",
+      "description": "Added c:\\Kick this Uss\\OMNI\\backend\\integrations\\copilot_integration.py"
+    },
+    {
+      "version": 46,
+      "timestamp": "2026-01-10T14:18:49.276836",
+      "modifier": "copilot",
+      "description": "Added c:\\Kick this Uss\\OMNI\\backend\\integrations\\file_analyzer.py"
+    },
+    {
+      "version": 47,
+      "timestamp": "2026-01-10T14:18:49.281834",
+      "modifier": "copilot",
+      "description": "Added c:\\Kick this Uss\\OMNI\\backend\\integrations\\__init__.py"
+    },
+    {
+      "version": 48,
+      "timestamp": "2026-01-10T14:18:49.291834",
+      "modifier": "copilot",
+      "description": "Added c:\\Kick this Uss\\OMNI\\backend\\rag\\service.py"
+    },
+    {
+      "version": 49,
+      "timestamp": "2026-01-10T14:18:49.297834",
+      "modifier": "copilot",
+      "description": "Added c:\\Kick this Uss\\OMNI\\backend\\rag\\__init__.py"
+    },
+    {
+      "version": 50,
+      "timestamp": "2026-01-10T14:18:49.302836",
+      "modifier": "copilot",
+      "description": "Added c:\\Kick this Uss\\OMNI\\backend\\rulesets\\gdpr-sample.yaml"
+    }
+  ],
+  "last_updated": "2026-01-10T14:18:49.302836",
+  "created_at": "2026-01-10T14:18:48.849337"
+}

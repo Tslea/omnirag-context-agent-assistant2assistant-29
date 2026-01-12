@@ -1,0 +1,70 @@
+# Example Compliance Ruleset - GDPR Data Protection
+# This is a sample ruleset demonstrating the format.
+# Add your own rules or use industry-standard rulesets.
+
+ruleset: gdpr-data-protection
+version: "1.0.0"
+description: "GDPR data protection compliance rules"
+enabled: true
+
+rules:
+  - id: gdpr-pii-logging
+    name: PII Logging Detection
+    description: Detects potential logging of personally identifiable information
+    category: data-protection
+    severity: major
+    regulation: GDPR
+    article: "Article 5(1)(f)"
+    patterns:
+      - "log.*email"
+      - "log.*password"
+      - "log.*ssn"
+      - "log.*credit.?card"
+      - "console\\.log.*user"
+    file_patterns:
+      - "*.py"
+      - "*.js"
+      - "*.ts"
+      - "*.java"
+    remediation: "Remove PII from logs or use data masking"
+    references:
+      - "https://gdpr.eu/article-5-how-to-process-personal-data/"
+    enabled: true
+
+  - id: gdpr-data-retention
+    name: Data Retention Policy Check
+    description: Checks for hardcoded retention periods
+    category: data-retention
+    severity: minor
+    regulation: GDPR
+    article: "Article 5(1)(e)"
+    keywords:
+      - "retention"
+      - "delete_after"
+      - "expiry"
+      - "keep_for"
+    file_patterns:
+      - "*.py"
+      - "*.yaml"
+      - "*.json"
+    remediation: "Ensure retention periods are configurable and documented"
+    enabled: true
+
+  - id: gdpr-consent-tracking
+    name: Consent Tracking Check
+    description: Verifies consent tracking mechanisms exist
+    category: consent
+    severity: advisory
+    regulation: GDPR
+    article: "Article 7"
+    keywords:
+      - "consent"
+      - "opt_in"
+      - "opt_out"
+      - "gdpr_consent"
+    file_patterns:
+      - "*.py"
+      - "*.js"
+      - "*.ts"
+    remediation: "Implement proper consent tracking if handling EU user data"
+    enabled: true

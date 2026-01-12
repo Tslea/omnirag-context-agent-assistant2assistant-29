@@ -1,0 +1,178 @@
+# Benchmark Tasks: Web App con Autenticazione
+# 
+# Obiettivo: Testare quanto contesto Copilot ha bisogno per completare
+# una serie di task sequenziali che costruiscono una web app con auth.
+#
+# Ogni task dipende dai precedenti, quindi Copilot deve capire:
+# - Cosa è già stato creato
+# - Pattern e convenzioni usate
+# - Dipendenze tra file
+
+project:
+  name: "auth-benchmark-app"
+  description: "Web app con autenticazione JWT"
+  stack:
+    backend: "fastapi"
+    database: "sqlite"
+    auth: "jwt"
+    frontend: "html/js"
+
+tasks:
+  - id: "T1_project_setup"
+    name: "Setup Progetto Base"
+    description: |
+      Crea la struttura base del progetto FastAPI:
+      - main.py con app FastAPI
+      - config.py con settings (SECRET_KEY, DATABASE_URL)
+      - requirements.txt con dipendenze
+    expected_files:
+      - "main.py"
+      - "config.py"
+      - "requirements.txt"
+    depends_on: []
+    complexity: "low"
+    estimated_tokens_without_context: 500
+    estimated_tokens_with_context: 200
+
+  - id: "T2_database_models"
+    name: "Modello User e Database"
+    description: |
+      Crea il modello User con SQLAlchemy:
+      - models/user.py con classe User (id, email, hashed_password, created_at)
+      - database.py con engine e SessionLocal
+      - Usa le settings da config.py
+    expected_files:
+      - "models/user.py"
+      - "database.py"
+    depends_on: ["T1_project_setup"]
+    complexity: "medium"
+    estimated_tokens_without_context: 2000
+    estimated_tokens_with_context: 400
+
+  - id: "T3_auth_utils"
+    name: "Utilities Autenticazione"
+    description: |
+      Crea le utility per autenticazione:
+      - auth/utils.py con:
+        - hash_password(password) -> str
+        - verify_password(plain, hashed) -> bool
+        - create_access_token(data, expires_delta) -> str
+        - decode_token(token) -> dict
+      - Usa bcrypt per password e jose per JWT
+      - Usa SECRET_KEY da config.py
+    expected_files:
+      - "auth/utils.py"
+    depends_on: ["T1_project_setup"]
+    complexity: "medium"
+    estimated_tokens_without_context: 3000
+    estimated_tokens_with_context: 500
+
+  - id: "T4_register_endpoint"
+    name: "Endpoint Registrazione"
+    description: |
+      Crea endpoint POST /api/auth/register:
+      - routes/auth.py con router
+      - Schema RegisterRequest (email, password)
+      - Schema UserResponse (id, email, created_at)
+      - Verifica email non già esistente
+      - Hash password prima di salvare
+      - Integra in main.py
+    expected_files:
+      - "routes/auth.py"
+      - "schemas/auth.py"
+    depends_on: ["T2_database_models", "T3_auth_utils"]
+    complexity: "high"
+    estimated_tokens_without_context: 5000
+    estimated_tokens_with_context: 800
+
+  - id: "T5_login_endpoint"
+    name: "Endpoint Login"
+    description: |
+      Aggiungi endpoint POST /api/auth/login:
+      - Schema LoginRequest (email, password)
+      - Schema TokenResponse (access_token, token_type)
+      - Verifica credenziali
+      - Genera JWT token
+      - Aggiungi al router esistente in routes/auth.py
+    expected_files:
+      - "routes/auth.py"  # modifica
+      - "schemas/auth.py"  # modifica
+    depends_on: ["T4_register_endpoint"]
+    complexity: "high"
+    estimated_tokens_without_context: 4000
+    estimated_tokens_with_context: 600
+
+  - id: "T6_auth_middleware"
+    name: "Middleware Autenticazione"
+    description: |
+      Crea middleware/dependency per proteggere endpoint:
+      - auth/dependencies.py con:
+        - get_current_user(token: str) -> User
+        - Estrae token da header Authorization
+        - Decodifica e valida JWT
+        - Ritorna User o raise HTTPException 401
+    expected_files:
+      - "auth/dependencies.py"
+    depends_on: ["T3_auth_utils", "T2_database_models"]
+    complexity: "high"
+    estimated_tokens_without_context: 4500
+    estimated_tokens_with_context: 700
+
+  - id: "T7_protected_endpoint"
+    name: "Endpoint Protetto (Profile)"
+    description: |
+      Crea endpoint protetto GET /api/users/me:
+      - routes/users.py con router
+      - Usa get_current_user come dependency
+      - Ritorna dati dell'utente autenticato
+      - Integra in main.py
+    expected_files:
+      - "routes/users.py"
+    depends_on: ["T6_auth_middleware"]
+    complexity: "medium"
+    estimated_tokens_without_context: 3000
+    estimated_tokens_with_context: 400
+
+  - id: "T8_frontend_login"
+    name: "Frontend Login Page"
+    description: |
+      Crea pagina HTML per login:
+      - static/login.html con form email/password
+      - static/js/auth.js con:
+        - Funzione login(email, password)
+        - Salva token in localStorage
+        - Redirect a /profile dopo login
+      - Serve static files in main.py
+    expected_files:
+      - "static/login.html"
+      - "static/js/auth.js"
+    depends_on: ["T5_login_endpoint"]
+    complexity: "medium"
+    estimated_tokens_without_context: 2500
+    estimated_tokens_with_context: 500
+
+# Metriche da raccogliere per ogni task
+metrics:
+  - name: "input_tokens"
+    description: "Token nel prompt (contesto + task)"
+  - name: "output_tokens"
+    description: "Token nella risposta generata"
+  - name: "time_seconds"
+    description: "Tempo di generazione"
+  - name: "files_read"
+    description: "Numero di file letti per contesto"
+  - name: "code_quality"
+    description: "Score qualità (0-100)"
+  - name: "uses_existing_patterns"
+    description: "Usa pattern già esistenti nel progetto (bool)"
+
+# Configurazione benchmark
+benchmark_config:
+  runs_per_task: 3  # Ripeti ogni task 3 volte per media
+  scenarios:
+    - name: "without_omni"
+      description: "Copilot legge tutti i file sorgente"
+      context_source: "raw_files"
+    - name: "with_omni"
+      description: "Copilot legge solo file .omni/"
+      context_source: "omni_summaries"

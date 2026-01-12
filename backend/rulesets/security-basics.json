@@ -1,0 +1,62 @@
+{
+  "ruleset": "security-basics",
+  "version": "1.0.0",
+  "description": "Basic security compliance rules",
+  "enabled": true,
+  "rules": [
+    {
+      "id": "sec-hardcoded-secrets",
+      "name": "Hardcoded Secrets Detection",
+      "description": "Detects hardcoded API keys and secrets",
+      "category": "secrets",
+      "severity": "critical",
+      "regulation": "Security Best Practices",
+      "article": "CWE-798",
+      "patterns": [
+        "api_key\\s*=\\s*[\"'][^\"']{20,}[\"']",
+        "secret\\s*=\\s*[\"'][^\"']{10,}[\"']",
+        "password\\s*=\\s*[\"'][^\"']+[\"']",
+        "AWS_SECRET_ACCESS_KEY",
+        "PRIVATE_KEY"
+      ],
+      "file_patterns": ["*.py", "*.js", "*.ts", "*.java", "*.go", "*.env"],
+      "remediation": "Use environment variables or secret management service",
+      "references": ["https://cwe.mitre.org/data/definitions/798.html"],
+      "enabled": true
+    },
+    {
+      "id": "sec-sql-string-concat",
+      "name": "SQL String Concatenation",
+      "description": "Detects potential SQL injection via string concatenation",
+      "category": "injection",
+      "severity": "critical",
+      "regulation": "Security Best Practices",
+      "article": "CWE-89",
+      "patterns": [
+        "execute\\s*\\(\\s*[\"'].*\\+",
+        "SELECT.*\\+.*FROM",
+        "f[\"']SELECT.*\\{"
+      ],
+      "file_patterns": ["*.py", "*.js", "*.ts"],
+      "remediation": "Use parameterized queries or ORM",
+      "references": ["https://cwe.mitre.org/data/definitions/89.html"],
+      "enabled": true
+    },
+    {
+      "id": "sec-http-not-https",
+      "name": "Insecure HTTP Usage",
+      "description": "Detects HTTP URLs that should be HTTPS",
+      "category": "transport-security",
+      "severity": "major",
+      "regulation": "Security Best Practices",
+      "article": "CWE-319",
+      "patterns": [
+        "http://(?!localhost|127\\.0\\.0\\.1)"
+      ],
+      "file_patterns": ["*.py", "*.js", "*.ts", "*.yaml", "*.json"],
+      "remediation": "Use HTTPS for all external communications",
+      "references": ["https://cwe.mitre.org/data/definitions/319.html"],
+      "enabled": true
+    }
+  ]
+}

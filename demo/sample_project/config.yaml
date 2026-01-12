@@ -1,0 +1,20 @@
+# Sample Configuration
+
+server:
+  host: localhost
+  port: 8080
+  debug: true
+
+database:
+  url: http://db.example.com:5432  # Should be HTTPS
+  username: admin
+  password: admin123  # Hardcoded password for demo
+
+features:
+  enable_logging: true
+  log_level: DEBUG
+  retention_days: 365
+
+gdpr:
+  consent_tracking: false  # Not tracking consent
+  data_retention_policy: null
